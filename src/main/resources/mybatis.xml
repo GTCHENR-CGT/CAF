@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<!--mybatis全局配置-->
+<configuration>
+    <!--数据库配置文件-->
+    <properties resource="jdbc.properties"></properties>
+
+<!--    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>-->
+
+    <typeAliases>
+        <package name="com.gtchenr.pojo"/>
+    </typeAliases>
+
+    <!--  mybatis环境配置  -->
+    <environments default="development">
+        <!-- id:数据源的名称 -->
+        <environment id="development">
+            <!-- 事务类型：JDBC 使用Connection对象的提交和方法 -->
+            <transactionManager type="JDBC"/>
+            <!-- 创建数据源 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.user}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/gtchenr/mapper/RoleMapper.xml"/>
+        <mapper resource="com/gtchenr/mapper/TeamMapper.xml"/>
+        <mapper resource="com/gtchenr/mapper/UserMapper.xml"/>
+    </mappers>
+
+</configuration>

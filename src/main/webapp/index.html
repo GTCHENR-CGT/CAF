@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" type="text/css" href="./css/lib/icon.css">
+    <style lang="scss">
+        @import "css/loginPage.css";
+        @import "css/lib/total.scss";
+    </style>
+    <script type="text/javascript" src="js/lib/jquery-1.11.1.min.js"></script>
+    <script type="module">
+        import {login,authorization} from "./js/service/login/service.js";
+        import {setStorage} from "./js/API/common.js";
+        import {navigateToHome} from "./js/API/pageTurn.js"
+
+        window.login1 = function (){
+            let data = $('#loginForm').serialize();
+            login(data)
+                .then((res) => {
+                        if (res.statusCode === 200) {
+                            if(res.data != null){
+                                setStorage("accessToken",res.data[0]);
+                                setStorage("refreshToken",res.data[1]);
+                            }
+                            authorization1();
+                        }else {
+                            console.log("登录失败");
+                            $("#sign").show().delay(1500).fadeOut();
+                        }
+                    }, (err) => {
+                        console.log("已经登录或者网络出现错误或者其它原因！");
+                    }
+                )
+        }
+        window.authorization1 = function (){
+            $("#sign").hide();
+            authorization()
+                .then((res)=>{
+                    if(res.data) {
+                        //处于完成登录的界面情况
+                        navigateToHome();
+                        console.log("处于完成登录的界面情况")
+                    }else {
+                        console.log("处于登录界面")
+                        //处于登录界面
+                    }
+                })
+        }
+    </script>
+</head>
+<body id="body" onload="authorization1()">
+<div src="images/login/Hippopx.jpg" id="bg"/>
+<div class="letColumnCenter sign" id="sign">
+    <i class="iconfont icon-chucuo icon1"></i>
+    <label class="lab1">账号或者密码出错</label>
+</div>
+<div id="login_windows">
+    <text id="title">Login</text>
+    <form class="form" method="post" name="loginForm" id="loginForm">
+        <div class="input">
+            <input type="text" id="loginName" name="loginName" class="input1" required placeholder="loginName">
+        </div>
+        <div class="input">
+            <input type="password" id="password" name="password" class="input1" placeholder="password" required>
+        </div>
+        <button class="button" type="button" id="bt" onclick="login1()">登录</button>
+    </form>
+</div>
+</body>
+</html>
