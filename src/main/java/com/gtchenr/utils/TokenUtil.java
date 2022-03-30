@@ -22,7 +22,7 @@ import java.util.UUID;
  *              |的登录认证，一个存储用户的信息。
  * @Since version-1.0
  */
-public class TokenUtils {
+public class TokenUtil {
 
     private static final String KEY = "78b5ae63a1d14bef89957faf0a49e09e";
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(KEY.getBytes(StandardCharsets.UTF_8));

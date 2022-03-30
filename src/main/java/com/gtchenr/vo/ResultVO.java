@@ -2,19 +2,19 @@ package com.gtchenr.vo;
 
 import java.util.List;
 
-public class AjaxResultVO<T> {
+public class ResultVO<T> {
 
     private int statusCode;
     private String msg;
     private T data;
 
-    public AjaxResultVO() {
+    public ResultVO() {
         this.statusCode = 200;
         this.msg = "success";
         this.data = null;
     }
 
-    public AjaxResultVO(int statusCode, String msg, T data) {
+    public ResultVO(int statusCode, String msg, T data) {
         this.statusCode = statusCode;
         this.msg = msg;
         this.data = data;
