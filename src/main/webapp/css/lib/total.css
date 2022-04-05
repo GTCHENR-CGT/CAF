@@ -26,17 +26,21 @@
 	flex-direction: row-reverse;
 }
 
-.flex-column{
-	display: flex;
-	flex-direction: column;
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
 
-.flex-column-reverse{
-	display: flex;
-	flex-direction: column-reverse;
+.flex-column-reverse {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
-// @font-face {
-//   font-family: myFirstFont;
-//   /* src: url('@/src/pages/level1/team/CSS/Helvetica.ttc'); */
-// }
+/*// @font-face {*/
+/*//   font-family: myFirstFont;*/
+/*//   !* src: url('@/src/pages/level1/team/CSS/Helvetica.ttc'); *!*/
+/*// }*/
+
+.height-40 {
+    height: 40px;
+}

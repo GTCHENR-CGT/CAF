@@ -1,4 +1,4 @@
-package com.gtchenr.utils;
+package com.gtchenr.utils.use;
 
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ public enum FieldCheck {
      * 分词：true
      * 存储：false
      */
-    FLOAT_POINT, DOUBLE_POINT,LONG_POINT,INT_POINT,
+    FLOAT_POINT, DOUBLE_POINT, LONG_POINT, INT_POINT,
     /**
      * 索引：false
      * 分词：false
@@ -27,5 +27,5 @@ public enum FieldCheck {
      * 是否分词：true
      * 是否存储：true or false
      */
-    TEXT_FIELD_TRUE, TEXT_FIELD_FALSE,TEXT_FIELD_IO
+    TEXT_FIELD_TRUE, TEXT_FIELD_FALSE, TEXT_FIELD_IO
 }

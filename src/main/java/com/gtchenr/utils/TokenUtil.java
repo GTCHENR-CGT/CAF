@@ -19,7 +19,7 @@ import java.util.UUID;
  * @Author gtchenr
  * @Date 2022/3/25 17:27
  * @Description |使用HS256算法生成签名signature的jws，在这个utils中，因为设置私有声明会导致公有声明无法设置，所以必须用两个token,一个存储用户的
- *              |的登录认证，一个存储用户的信息。
+ * |的登录认证，一个存储用户的信息。
  * @Since version-1.0
  */
 public class TokenUtil {
@@ -27,12 +27,13 @@ public class TokenUtil {
     private static final String KEY = "78b5ae63a1d14bef89957faf0a49e09e";
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(KEY.getBytes(StandardCharsets.UTF_8));
     private static final Integer TIME = 2;//token有效时间,单位min
+
     /**
      * 获取包含用户信息的token，
      * @param user
      * @return
      */
-    public static String getAccessToken(User user){
+    public static String getAccessToken(User user) {
         Date date = new Date();
         Map<String,Object> map = new HashMap<>();
         map.put("userId",user.getUserId());

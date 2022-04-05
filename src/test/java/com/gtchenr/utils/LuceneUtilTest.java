@@ -1,2 +1,11 @@
-package com.gtchenr.utils;public class LuceneUtilTest {
+package com.gtchenr.utils;
+
+import org.junit.Test;
+
+public class LuceneUtilTest {
+
+    @Test
+    public void createIndexTest() {
+
+    }
 }

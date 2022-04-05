@@ -10,7 +10,7 @@ public class TokenUtilTest {
     @Test
     public void getTokenTest(){
 
-        System.out.println(TokenUtils.getAccessToken(getUser()));
+        System.out.println(TokenUtil.getAccessToken(getUser()));
     }
 
     @Test

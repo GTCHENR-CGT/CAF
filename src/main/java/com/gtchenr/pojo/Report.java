@@ -1,5 +1,7 @@
 package com.gtchenr.pojo;
 
+import java.util.Date;
+
 public class Report {
     private Integer reportId;
     private Integer userId;
@@ -8,6 +10,53 @@ public class Report {
     private String reportIntroduction;
     private String reportDetails;
     private String reportPeople;
+    private Date reportBeginTime;
+    private Date reportEndTime;
+    private String reportLocation;
+    private String reportPeopleInfo;
+    private String reportTitle;
+
+    public String getReportTitle() {
+        return reportTitle;
+    }
+
+    public void setReportTitle(String reportTitle) {
+        this.reportTitle = reportTitle;
+    }
+
+
+
+    public Date getReportBeginTime() {
+        return reportBeginTime;
+    }
+
+    public void setReportBeginTime(Date reportBeginTime) {
+        this.reportBeginTime = reportBeginTime;
+    }
+
+    public Date getReportEndTime() {
+        return reportEndTime;
+    }
+
+    public void setReportEndTime(Date reportEndTime) {
+        this.reportEndTime = reportEndTime;
+    }
+
+    public String getReportLocation() {
+        return reportLocation;
+    }
+
+    public void setReportLocation(String reportLocation) {
+        this.reportLocation = reportLocation;
+    }
+
+    public String getReportPeopleInfo() {
+        return reportPeopleInfo;
+    }
+
+    public void setReportPeopleInfo(String reportPeopleInfo) {
+        this.reportPeopleInfo = reportPeopleInfo;
+    }
 
     public Integer getReportId() {
         return reportId;
@@ -63,5 +112,23 @@ public class Report {
 
     public void setReportPeople(String reportPeople) {
         this.reportPeople = reportPeople;
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "reportId=" + reportId +
+                ", userId=" + userId +
+                ", boardId=" + boardId +
+                ", reportOrganizer='" + reportOrganizer + '\'' +
+                ", reportIntroduction='" + reportIntroduction + '\'' +
+                ", reportDetails='" + reportDetails + '\'' +
+                ", reportPeople='" + reportPeople + '\'' +
+                ", reportBeginTime=" + reportBeginTime +
+                ", reportEndTime=" + reportEndTime +
+                ", reportLocation='" + reportLocation + '\'' +
+                ", reportPeopleInfo='" + reportPeopleInfo + '\'' +
+                ", reportTitle='" + reportTitle + '\'' +
+                '}';
     }
 }

@@ -47,6 +47,12 @@
           <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-impl:0.11.2" />
           <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-jackson:0.11.2" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.12.0" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-core:8.9.0" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-queryparser:8.9.0" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-queries:8.9.0" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-sandbox:8.9.0" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-analyzers-common:8.9.0" />
+          <element id="library" level="project" name="Maven: com.github.magese:ik-analyzer:8.1.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

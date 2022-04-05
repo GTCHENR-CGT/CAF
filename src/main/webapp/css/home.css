@@ -1,0 +1,146 @@
+#body {
+    /*background-color: rgb(234,234,234);*/
+}
+
+.user_info {
+    height: 25px;
+    font-size: 12px;
+    background-color: white;
+}
+
+.user_item {
+    height: 30px;
+}
+
+.title {
+    height: 50px;
+    font-size: 18px;
+    border: red;
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(200, 15, 15);
+
+    /*flex-shrink: 1;*/
+
+}
+
+.title_item {
+    width: 200px;
+    height: 50px;
+    border-right: white solid 1px;
+}
+
+.title_item_select {
+    width: 200px;
+    height: 50px;
+    color: red;
+    background-color: white;
+}
+
+.admin {
+    position: absolute;
+    margin-left: 20px;
+    left: 0;
+}
+
+.notice {
+    margin-top: 100px;
+    /*margin-left: 45px;*/
+}
+
+.notice_item {
+    height: 90px;
+    width: 250px;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: rgb(200, 15, 15);
+    color: white;
+    border-bottom: white solid 1px;
+}
+
+.search {
+
+    width: 1100px;
+    margin: 10px auto 0 auto;
+    border: silver solid 1px;
+}
+
+.search-input {
+    height: 50px;
+    width: 850px;
+    font-size: 15px;
+    margin-left: 20px;
+    border: 0 none;
+    outline: none;
+    box-shadow: none;
+}
+
+.search-theme1 {
+    position: absolute;
+    width: 180px;
+    font-size: 15px;
+    border-left: silver solid 1px;
+    border-right: silver solid 1px;
+    margin-top: 0;
+    background-color: white;
+    z-index: 20;
+    /*background-color: red;*/
+}
+
+.search-theme2 {
+    width: 180px;
+    height: 30px;
+    margin: 10px 0;
+    font-size: 15px;
+    border-right: silver solid 1px;
+}
+
+.search-theme-select {
+
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+}
+
+.search-theme1 dt {
+    padding: 0 10px;
+    border-bottom: silver solid 1px;
+
+}
+
+.click {
+    cursor: pointer;
+}
+
+.search-icon {
+    width: 70px;
+    margin: 10px 0 10px 20px;
+    border-left: silver solid 1px;
+    text-align: center;
+}
+
+.report div {
+    width: 500px;
+    border-bottom: silver solid 1px;
+}
+
+.report {
+    margin-left: 50px;
+    margin-top: 40px;
+}
+
+.report-item {
+    width: 1100px;
+    text-align: justify;
+    margin-bottom: 5px;
+}
+
+.report-title {
+    float: left;
+    font-size: 13px;
+
+}
+
+.report-date {
+    float: right;
+}

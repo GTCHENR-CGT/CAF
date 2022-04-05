@@ -20,3 +20,7 @@
 .icon-chucuo1:before {
     content: "\e61c";
 }
+
+.icon-search:before {
+    content: "\";
+}

@@ -9,7 +9,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a971e580-f6b8-44e4-bfdc-f4a5db4e0296" name="Default Changelist" comment="" />
+    <list default="true" id="a971e580-f6b8-44e4-bfdc-f4a5db4e0296" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/ReportController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/mapper/ReportMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/ReportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/impl/ReportServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/gtchenr/mapper/ReportMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/home/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/test/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/test/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/mapper/ReportMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/CAF_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/CAF_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CAF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CAF.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/RecommendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/RecommendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/pojo/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/pojo/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/SearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/impl/SearchServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/impl/SearchServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/LuceneUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/LuceneUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/TokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/FieldCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/FieldCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/FieldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/FieldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/FieldObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/FieldObjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/lib/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/lib/icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/lib/total.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/lib/total.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/hh.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/hh.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/pageUrls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/pageUrls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/axios/axios.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/axios/axios.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/lib/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/lib/vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/home/reportBundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/home/reportBundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/home/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/home/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gtchenr/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/controller/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/LuceneUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/LuceneUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/TokenUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/TokenUtilTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,14 +62,23 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Interface" />
         <option value="Jsp File" />
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Tag Library Descriptor" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="gtchenr &lt;gtchenr@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -64,10 +116,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="D:/ComputerLanguage/Android/android-sdk_r24.4.1-windows/android-sdk-windows" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/gtchenr/filter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/js/service/test" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -77,49 +130,22 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\js\service\test" />
+      <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\js\lib" />
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\java\com\gtchenr\filter" />
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\css\lib" />
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\js" />
-      <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\js\axios" />
-      <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\html" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp" />
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\js\lib" />
+      <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp" />
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\js" />
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\html" />
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\jsp" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TeamMapperTest.test01">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JwtUtilTest.getPayLoadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CAF" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gtchenr.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gtchenr.utils" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.utils.JwtUtilTest" />
-      <option name="METHOD_NAME" value="getPayLoadTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RoleMapperTest.test02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ReportMapperTest.queryAllTest">
+    <configuration name="ReportMapperTest.queryAllTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAF" />
       <extension name="coverage">
         <pattern>
@@ -128,14 +154,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.RoleMapperTest" />
-      <option name="METHOD_NAME" value="test02" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.ReportMapperTest" />
+      <option name="METHOD_NAME" value="queryAllTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TeamMapperTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportMapperTest.queryReportById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAF" />
       <extension name="coverage">
         <pattern>
@@ -144,40 +170,56 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.TeamMapperTest" />
-      <option name="METHOD_NAME" value="test01" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.ReportMapperTest" />
+      <option name="METHOD_NAME" value="queryReportById" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TokenUtilTest.getTokenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportMapperTest.queryReportByIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAF" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gtchenr.utils.*" />
+          <option name="PATTERN" value="com.gtchenr.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gtchenr.utils" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.utils.TokenUtilTest" />
-      <option name="METHOD_NAME" value="getTokenTest" />
+      <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.ReportMapperTest" />
+      <option name="METHOD_NAME" value="queryReportByIdTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TokenUtilTest.parseTokenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTest.existTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAF" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gtchenr.utils.*" />
+          <option name="PATTERN" value="com.gtchenr.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gtchenr.utils" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.utils.TokenUtilTest" />
-      <option name="METHOD_NAME" value="parseTokenTest" />
+      <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.UserMapperTest" />
+      <option name="METHOD_NAME" value="existTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperTest.queryUserByUserIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CAF" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gtchenr.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.UserMapperTest" />
+      <option name="METHOD_NAME" value="queryUserByUserIdTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -272,20 +314,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TokenUtilTest.getTokenTest" />
-      <item itemvalue="JUnit.TokenUtilTest.parseTokenTest" />
-      <item itemvalue="JUnit.TeamMapperTest.test01" />
-      <item itemvalue="JUnit.JwtUtilTest.getPayLoadTest" />
-      <item itemvalue="JUnit.RoleMapperTest.test02" />
+      <item itemvalue="JUnit.ReportMapperTest.queryAllTest" />
+      <item itemvalue="JUnit.UserMapperTest.queryUserByUserIdTest" />
+      <item itemvalue="JUnit.UserMapperTest.existTest" />
+      <item itemvalue="JUnit.ReportMapperTest.queryReportByIdTest" />
+      <item itemvalue="JUnit.ReportMapperTest.queryReportById" />
       <item itemvalue="Tomcat Server.Tomcat 10.0.18" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TeamMapperTest.test01" />
-        <item itemvalue="JUnit.RoleMapperTest.test02" />
-        <item itemvalue="JUnit.TokenUtilTest.getTokenTest" />
-        <item itemvalue="JUnit.JwtUtilTest.getPayLoadTest" />
-        <item itemvalue="JUnit.TokenUtilTest.parseTokenTest" />
+        <item itemvalue="JUnit.ReportMapperTest.queryAllTest" />
+        <item itemvalue="JUnit.ReportMapperTest.queryReportById" />
+        <item itemvalue="JUnit.ReportMapperTest.queryReportByIdTest" />
+        <item itemvalue="JUnit.UserMapperTest.existTest" />
+        <item itemvalue="JUnit.UserMapperTest.queryUserByUserIdTest" />
       </list>
     </recent_temporary>
   </component>
@@ -354,10 +396,22 @@
       <workItem from="1648269760990" duration="108000" />
       <workItem from="1648269881136" duration="2269000" />
       <workItem from="1648272692289" duration="4767000" />
+      <workItem from="1648289101513" duration="11000" />
+      <workItem from="1648289122791" duration="33998000" />
+      <workItem from="1648526530997" duration="28710000" />
+      <workItem from="1648569077812" duration="634000" />
+      <workItem from="1648598903204" duration="4636000" />
+      <workItem from="1648627091421" duration="6284000" />
+      <workItem from="1648644957055" duration="3412000" />
+      <workItem from="1649142399249" duration="20131000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

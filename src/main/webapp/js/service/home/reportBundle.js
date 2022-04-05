@@ -1,17 +1,16 @@
 import {getReportUrlByNewest} from "../js/service/home/service.js";
-window.vm = new Vue({
-    el:"#report-list",
-    data:{
-        reportList:["",""]
-    },
-    method:{
 
+let vm = new Vue({
+    el: "#report-list",
+    data: {
+        reportList: ["", ""]
     },
-    onload:function (){
+    method: {},
+    onload: function () {
         getReportUrlByNewest()
-            .then((res)=>{
+            .then((res) => {
                 console.log(res);
-            },(err)=>{
+            }, (err) => {
                 console.log(err);
             })
     }

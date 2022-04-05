@@ -2,8 +2,8 @@ package com.gtchenr.controller;
 
 import com.gtchenr.pojo.User;
 import com.gtchenr.service.impl.NormalUserServiceImpl;
-import com.gtchenr.utils.TokenUtils;
-import com.gtchenr.vo.AjaxResultVO;
+import com.gtchenr.utils.TokenUtil;
+import com.gtchenr.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +19,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("normalUser")
-public class NormalUserController {
+public class UserController {
 
     @Autowired
     private NormalUserServiceImpl normalUserService;
 
     /**
      * 用户发起登录请求
+     *
      * @param loginName
      * @param password
      * @param request
@@ -33,30 +34,30 @@ public class NormalUserController {
      */
     @ResponseBody
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public AjaxResultVO login(@RequestParam("loginName") String loginName, @RequestParam("password") String password, HttpServletRequest request) {
+    public ResultVO login(@RequestParam("loginName") String loginName, @RequestParam("password") String password, HttpServletRequest request) {
         System.out.println("用户发起登录请求！");
         boolean flag = normalUserService.login(loginName, password);
         //生成一个token
-        if(flag){
-            String accessToken  = request.getHeader("accessToken");
+        if (flag) {
+            String accessToken = request.getHeader("accessToken");
             String refreshToken = request.getHeader("refreshToken");
-            if(TokenUtils.parseRefreshToken(refreshToken)){
-                User user = TokenUtils.parseAccessToken(accessToken,refreshToken);
-                if(loginName.equals(user.getLoginName())){
-                    return new AjaxResultVO<String>(200,"success",null);
-                }else {
+            if (TokenUtil.parseRefreshToken(refreshToken)) {
+                User user = TokenUtil.parseAccessToken(accessToken, refreshToken);
+                if (loginName.equals(user.getLoginName())) {
+                    return new ResultVO<String>(200, "success", null);
+                } else {
                     System.out.println("token和登录名不一致！需要重新获取token");
                 }
             }
             User user = normalUserService.user(loginName);
-            accessToken = TokenUtils.getAccessToken(user);
-            refreshToken = TokenUtils.getRefreshToken(user);
+            accessToken = TokenUtil.getAccessToken(user);
+            refreshToken = TokenUtil.getRefreshToken(user);
             List<String> datalist = new ArrayList<>();
             datalist.add(accessToken);
             datalist.add(refreshToken);
-            return new AjaxResultVO<List<String>>(200, "success", datalist);
+            return new ResultVO<List<String>>(200, "success", datalist);
         }
-        return new AjaxResultVO(201,"fail",null);
+        return new ResultVO(201, "fail",null);
     }
 
     @RequestMapping("/hello.do")
@@ -76,9 +77,9 @@ public class NormalUserController {
 
     @ResponseBody
     @RequestMapping(value = "test2", method = RequestMethod.GET)
-    public AjaxResultVO test2() {
+    public ResultVO test2() {
         String name = "gcthenr";
-        return new AjaxResultVO<String>(200, "success", name);
+        return new ResultVO<String>(200, "success", name);
     }
 
     @RequestMapping("hello")
@@ -88,12 +89,12 @@ public class NormalUserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "authorization",method = RequestMethod.POST)
-    public AjaxResultVO authorization(HttpServletRequest request){
+    @RequestMapping(value = "authorization", method = RequestMethod.POST)
+    public ResultVO authorization(HttpServletRequest request) {
         String token = request.getHeader("refreshToken");
-        if(token == null || !TokenUtils.parseRefreshToken(token))
-            return new AjaxResultVO<Boolean>(200,"success",false);
-        return new AjaxResultVO<Boolean>(200,"success",true);
+        if (token == null || !TokenUtil.parseRefreshToken(token))
+            return new ResultVO<Boolean>(200, "success", false);
+        return new ResultVO<Boolean>(200, "success", true);
     }
 }
 

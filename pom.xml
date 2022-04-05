@@ -27,6 +27,7 @@
         <log4j.version>1.2.17</log4j.version>
         <junit.version>4.12</junit.version>
         <jjwt.version>0.11.2</jjwt.version>
+        <lecene.version>8.9.0</lecene.version>
     </properties>
 
     <dependencies>
@@ -151,6 +152,27 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
+        </dependency>
+        <!--全文 检索-->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${lecene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>${lecene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>${lecene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.magese</groupId>
+            <artifactId>ik-analyzer</artifactId>
+            <version>8.1.0</version>
         </dependency>
     </dependencies>
 

@@ -1,6 +1,6 @@
 package com.gtchenr.interceptor;
 
-import com.gtchenr.utils.TokenUtils;
+import com.gtchenr.utils.TokenUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

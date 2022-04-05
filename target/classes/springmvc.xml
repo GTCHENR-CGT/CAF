@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--   对控制器层controller的配置,即对Servlet的配置,控制器的所有bean对象都在这里扫描    -->
+    <context:component-scan base-package="com.gtchenr.controller;com.gtchenr.service"></context:component-scan>
+
+    <mvc:annotation-driven/>
+    <!--  视图解析器  -->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/html/"/>
+        <property name="suffix" value=".html"/>
+    </bean>
+    <!-- 检测是否请求是静态资源，如果是，则不会通过dispatcherServlet去访问 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+    <!--可以按顺序配置多个拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/normalUser/**"/>
+<!--            <mvc:exclude-mapping path="normalUser/hello"/>-->
+            <bean class="com.gtchenr.interceptor.MyInterceptor" id="myinterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/normalUser/login"/>
+            <bean class="com.gtchenr.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+</beans>
