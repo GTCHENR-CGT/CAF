@@ -12,4 +12,6 @@ public interface ReportMapper {
     Report queryReportById(Integer id);
 
     Report queryReportInfoById(Integer id);
+
+    List<Report> queryReportsInfo();
 }

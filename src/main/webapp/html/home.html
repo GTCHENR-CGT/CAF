@@ -9,7 +9,6 @@
     <style lang="css">
         @import "../css/home.css";
         @import "../css/lib/total.css";
-
     </style>
     <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../js/lib/vue.js"></script>
@@ -18,11 +17,13 @@
             console.log("ssshhh");
             hideThemeList();
         }
-
-
+        window.showThemeList = function () {
+            $(".search-theme1").show();
+        }
+        window.hideThemeList = function () {
+            $(".search-theme1").hide();
+        }
     </script>
-
-
 </head>
 <body id="body" onload="init()">
 
@@ -33,13 +34,63 @@
         <label class="admin"><a>管理员登录</a></label>
     </div>
 </div>
-<!--论坛版块选择-->
-<div class="title flex-row letallCenter" id="border">
-    <div class="title_item letallCenter">学术论坛</div>
+<div id="home">
+    <!--论坛版块选择-->
+    <div class="title flex-row letallCenter" id="border">
+        <div class="title_item letallCenter">学术论坛</div>
 
-    <border-item v-for="border in borders" :name="border.name" :select="border.select" @click.native="borderClick(border)"></border-item>
+        <border-item v-for="border in borders" :name="border.name" :select="border.select"
+                     @click.native="borderClick(border)"></border-item>
+    </div>
+    <!--搜索框-->
+    <div class="search letColumnCenter" id="search">
+        <div onmouseover="showThemeList()" onmouseout="hideThemeList()">
+            <div class="search-theme2 letallCenter">{{themeSelected}}</div>
+            <dl class="search-theme1">
+                <div v-for="theme in themes">
+                    <theme-item :theme="theme.name" :select="theme.select"
+                                @click.native="themeClick(theme)"></theme-item>
+                </div>
+            </dl>
+        </div>
+        <input class="search-input"/>
+        <div class="search-icon click"><span class="iconfont icon-sousuo"
+                                             style="font-size: 20px;align-content: center"></span></div>
+    </div>
+    <div class="flex-row letRowCenter">
+        <!--论坛版块-->
+        <div class="notice">
+            <dl>
+                <dt class="notice_item letallCenter click">学术报告</dt>
+                <dt class="notice_item letallCenter click">通知公告</dt>
+                <dt class="notice_item letallCenter click">论坛规则</dt>
+                <dt class="notice_item letallCenter click">系统公告</dt>
+            </dl>
+        </div>
+
+        <!--报告列表-->
+        <div class="report flex-column" id="reportList">
+            <div class="letColumnCenter">
+                <span class="iconfont icon-weizhi"></span>位置|学术报告-->{{borderSelected}}
+            </div>
+            <dl class="report-list flex-column" id="report-list">
+                <report-item v-for="report in reportList" :report="report"
+                             @click.native="navigateToReportDetail(report.reportId)"></report-item>
+            </dl>
+        </div>
+    </div>
 </div>
 <script type="module">
+    import {getReportUrlByNewest, getReports} from "../js/service/home/service.js";
+    import {navigateToReport} from "../js/API/pageTurn.js";
+
+    let reportItem = {
+        props: {
+            report: Object,
+            title: String
+        },
+        template: '<dt class="report-item"><span class="report-title click"><a>【学术报告】{{report.reportTitle}}</a></span><span class="report-date">2021-05-21</span></dt>'
+    }
     let borderItem = {
         props: {
             name: String,
@@ -47,76 +98,51 @@
         },
         template: '<div class="letallCenter click title_item" :class="select">{{name}}</div>'
     }
+    let themeItem = {
+        props: {
+            theme: String,
+            select: String,
+        },
+        template: '<dt class="letallCenter height-40 click" :class="select">{{theme}}</dt>'
+    };
 
     let vm = new Vue({
-        el: "#border",
-        components:{
-            'border-item' : borderItem,
+        el: "#home",
+        components: {
+            'border-item': borderItem,
+            'report-item': reportItem,
+            'theme-item': themeItem
         },
         data: function () {
             return {
+                reportList: Array,
                 borders: [{name: "论坛首页", select: ""},
                     {name: "热度推荐", select: ""},
                     {name: "最新发布", select: ""},
                     {name: "最新回复", select: ""},
                     {name: "计算机", select: ""},
                     {name: "数学", select: "title_item_select"}],
-                isSelected: "数学"
+                borderSelected: "数学",
+                themes: [{name: '主题', select: "search-theme-select"},
+                    {name: '关键字', select: ""},
+                    {name: '全名', select: ""},
+                    {name: '汇报人', select: ""}],
+                themeSelected: '主题'
             }
         },
         methods: {
-            borderClick : function (border){
-                this.isSelected = border.name;
-                for (let i=0;i<this.borders.length;i++){
-                    if(border.name === this.borders[i].name){
+            borderClick: function (border) {
+                this.borderSelected = border.name;
+                for (let i = 0; i < this.borders.length; i++) {
+                    if (border.name === this.borders[i].name) {
                         this.borders[i].select = "title_item_select";
-                    }else {
+                    } else {
                         this.borders[i].select = "";
                     }
                 }
-            }
-        }
-    })
-</script>
-
-<!--搜索框-->
-<div class="search letColumnCenter" id="search">
-    <div onmouseover="showThemeList()" onmouseout="hideThemeList()">
-        <div class="search-theme2 letallCenter">{{isSelected}}</div>
-        <dl class="search-theme1">
-            <div v-for="theme in themes">
-                <search-theme :theme="theme.name" :select="theme.select"
-                              @click.native="themeClick(theme)"></search-theme>
-            </div>
-        </dl>
-    </div>
-    <input class="search-input"/>
-    <div class="search-icon click"><span class="iconfont icon-sousuo"
-                                         style="font-size: 20px;align-content: center"></span></div>
-</div>
-<script type="module">
-    Vue.component('search-theme', {
-        props: {
-            theme: String,
-            select: String,
-        },
-        template: '<dt class="letallCenter height-40 click" :class="select">{{theme}}</dt>'
-    })
-    let vm = new Vue({
-        el: "#search",
-        data: function () {
-            return {
-
-                themes: [{name: '主题', select: "search-theme-select"}, {name: '关键字', select: ""}, {
-                    name: '全名',
-                    select: ""
-                }, {name: '汇报人', select: ""}],
-                isSelected: '主题'
-            }
-        },
-        methods: {
+            },
             themeClick: function (theme) {
-                this.isSelected = theme.name;
+                this.themeSelected = theme.name;
                 for (let i = 0; i < this.themes.length; i++) {
                     if (theme.name === this.themes[i].name) {
                         this.themes[i].select = "search-theme-select";
@@ -125,75 +151,26 @@
                     }
                 }
             },
+            navigateToReportDetail: function (reportId) {
+                navigateToReport(reportId);
+            },
         },
         mounted() {
-        }
-    })
-    window.showThemeList = function () {
-        $(".search-theme1").show();
-    }
-    window.hideThemeList = function () {
-        $(".search-theme1").hide();
-    }
-</script>
-
-
-<div class="flex-row letRowCenter">
-    <!--论坛版块-->
-    <div class="notice">
-        <dl>
-            <dt class="notice_item letallCenter click">学术报告</dt>
-            <dt class="notice_item letallCenter click">通知公告</dt>
-            <dt class="notice_item letallCenter click">论坛规则</dt>
-            <dt class="notice_item letallCenter click">系统公告</dt>
-        </dl>
-    </div>
-
-    <!--报告列表-->
-    <div class="report flex-column" id="home">
-        <div class="letColumnCenter">
-            <span class="iconfont icon-weizhi"></span>位置|学术报告-->数学
-        </div>
-        <dl class="report-list flex-column" id="report-list">
-            <team-list v-for="report in reportList" :report="report"></team-list>
-        </dl>
-    </div>
-    <script type="module">
-        import {getReportUrlByNewest, getReports} from "../js/service/home/service.js";
-
-        Vue.component('team-list', {
-            props: {
-                report: Object,
-                title: String
-            },
-            template: '<dt class="report-item"><span class="report-title click"><a>【学术报告】{{report.reportTitle}}</a></span><span class="report-date">2021-05-21</span></dt>'
-        })
-        let vm = new Vue({
-            el: "#home",
-            component: {},
-            data: {
-                reportList: Array,
-
-            },
-            method: {},
-            mounted() {
-                getReports()
-                    .then((res) => {
-                        this.reportList = res.data;
-                        for (let i = 0; i < this.reportList.length; i++) {
-                            if (this.reportList[i].reportTitle === null) {
-                                this.reportList.splice(i, 1);
-                            }
+            getReports()
+                .then((res) => {
+                    this.reportList = res.data;
+                    for (let i = 0; i < this.reportList.length; i++) {
+                        if (this.reportList[i].reportTitle === null) {
+                            this.reportList.splice(i, 1);
                         }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
-            },
-
-        })
-    </script>
-</div>
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        },
+    })
+</script>
 
 </body>
 </html>

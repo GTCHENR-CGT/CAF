@@ -13,6 +13,9 @@
     <select id="queryReportInfoById" parameterType="java.lang.Integer" resultMap="baseMap">
         select report_id,report_title,report_people from report where report_id=#{arg0}
     </select>
+    <select id="queryReportsInfo" resultMap="baseMap">
+        select report_id,report_title,report_people from report
+    </select>
 
     <resultMap id="baseMap" type="Report">
         <result column="report_id" property="reportId"/>

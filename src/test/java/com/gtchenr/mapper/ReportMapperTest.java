@@ -26,9 +26,18 @@ public class ReportMapperTest {
     }
 
     @Test
-    public void queryReportById(){
+    public void queryReportById() {
 
         Report report = reportMapper.queryReportInfoById(1);
         System.out.println(report);
+    }
+
+    @Test
+    public void queryReportInfoTest() {
+
+        List<Report> reports = reportMapper.queryReportsInfo();
+        for (Report r : reports) {
+            System.out.println(r);
+        }
     }
 }

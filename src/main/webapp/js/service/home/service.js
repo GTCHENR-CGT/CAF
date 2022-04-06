@@ -8,5 +8,6 @@ export function getReportUrlByNewest() {
 
 export function getReports(){
 
-    return httpInstance.get(apiUrls.getReports);
+    return httpInstance.get(apiUrls.getReports,);
 }
+

@@ -12,4 +12,5 @@ public interface ReportService {
     Report getReportById(Integer id);
 
     List<Report> getReports();
+
 }

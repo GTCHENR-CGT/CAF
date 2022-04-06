@@ -8,8 +8,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class PageTurnController {
 
     @RequestMapping("home")
-    public ModelAndView navigateToHome(){
+    public ModelAndView navigateToHome() {
         System.out.println("navigateToHome--------");
         return new ModelAndView("home");
+    }
+
+    @RequestMapping("reportDetail")
+    public ModelAndView navigateToReportDetail() {
+        System.out.println("navigateToReportDetail--------");
+        return new ModelAndView("reportDetail");
     }
 }

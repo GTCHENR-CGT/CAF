@@ -81,6 +81,7 @@
     font-size: 15px;
     border-left: silver solid 1px;
     border-right: silver solid 1px;
+    border-top: silver solid 1px;
     margin-top: 0;
     background-color: white;
     z-index: 20;

@@ -5,7 +5,12 @@ import {navigateTo} from "./common.js";
  * 跳转到主页面
  * @returns {*}
  */
-export function navigateToHome(){
+export function navigateToHome() {
 
     return navigateTo(pageUrls.home);
+}
+
+export function navigateToReport(reportId) {
+    console.log(reportId)
+    return navigateTo(pageUrls.reportDetail + "?reportId=" + reportId);
 }

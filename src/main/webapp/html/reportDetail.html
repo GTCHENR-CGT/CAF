@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/lib/vue.js"></script>
+    <script type="module">
+        import {getReportById} from "../js/service/reportDetailService.js"
+        import {setSessionStorage, getSessionStorage} from "../js/API/common.js"
+
+        function getQueryVariable(variable) {
+            let query = window.location.search.substring(1);
+            let vars = query.split("&");
+            for (let i = 0; i < vars.length; i++) {
+                let pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return (false);
+        }
+
+        window.init = function () {
+            let reportId = getQueryVariable("reportId");
+            setSessionStorage("reportId", reportId);
+        }
+
+
+    </script>
+</head>
+<body onload="init()">
+<div>
+
+</div>
+</body>
+
+</html>
