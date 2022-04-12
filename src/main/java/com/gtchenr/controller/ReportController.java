@@ -20,9 +20,11 @@ public class ReportController {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     @ResponseBody
-    public Report getReportById(@PathVariable("id") Integer id){
-
-        return reportService.getReportById(id);
+    public ResultVO getReportById(@PathVariable("id") Integer id){
+        Report report = reportService.getReportById(id);
+        if(report == null)
+            return new ResultVO(201,"success",null);
+        return new ResultVO(200,"success",report);
     }
 
     @RequestMapping(value = "reports",method = RequestMethod.GET)

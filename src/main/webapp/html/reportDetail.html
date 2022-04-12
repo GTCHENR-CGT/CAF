@@ -5,33 +5,139 @@
     <title>Title</title>
     <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../js/lib/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/lib/icon.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3274788_9adk7b8pp9m.css">
+    <style lang="css">
+        @import "../css/reportDetail.css";
+        @import "../css/lib/total.css";
+    </style>
     <script type="module">
         import {getReportById} from "../js/service/reportDetailService.js"
         import {setSessionStorage, getSessionStorage} from "../js/API/common.js"
 
-        function getQueryVariable(variable) {
-            let query = window.location.search.substring(1);
-            let vars = query.split("&");
-            for (let i = 0; i < vars.length; i++) {
-                let pair = vars[i].split("=");
-                if (pair[0] == variable) {
-                    return pair[1];
+        let reportCom = {
+            props: {
+                report: Object,
+            },
+            template: ''
+        };
+        let commentCom = {
+            props: {
+                comment: Object,
+            },
+            template: '<div>' +
+                '<div class="letColumnCenter">' +
+                '<img src="../images/head1.png" style="height: 50px;width: 50px;border: silver solid 1px;border-radius: 100%"><div class="flex-column" style="font-size: 15px;margin-left: 15px"><label>昵称</label><label>时间</label></div>' +
+                '</div>' +
+                '<div>text</div>' +
+                '<div class="flex-row"><div class="click"><span></span><label>亮了(0)</label></div><div class="click"><span></span><label>回复</label></div></div>' +
+                '</div>'
+        }
+        let vm = new Vue({
+            el: "#report",
+            components: {
+                'report-item': reportCom,
+                'comment-item': commentCom
+            },
+            data: function () {
+                return {
+                    report: Object,
+                    commentList: Array,
+                    reportItem: [
+                        {key: "题目", value: null},
+                        {key: "报告人", value: null},
+                        {key: "组织者", value: null},
+                        {key: "时间", value: null},
+                        {key: "地点", value: null}
+                    ],
+
                 }
+            },
+            methods: {
+                getQueryVariable: function (variable) {
+                    let query = window.location.search.substring(1);
+                    let vars = query.split("&");
+                    for (let i = 0; i < vars.length; i++) {
+                        let pair = vars[i].split("=");
+                        if (pair[0] == variable) {
+                            return pair[1];
+                        }
+                    }
+                    return (false);
+                }
+            },
+            mounted() {
+                let reportId = this.getQueryVariable("reportId");
+                setSessionStorage("reportId", reportId);
+                getReportById(getSessionStorage("reportId"))
+                    .then((res) => {
+                        this.report = res.data;
+                        for (let i = 0; i < this.reportItem.length; i++) {
+                            switch (this.reportItem[i].key) {
+                                case "题目" :
+                                    this.reportItem[i].value = this.report.reportTitle;
+                                    break;
+                                case "报告人":
+                                    this.reportItem[i].value = this.report.reportPeople;
+                                    break;
+                                case "组织者":
+                                    this.reportItem[i].value = this.report.reportOrganizer;
+                                    break;
+                                case "时间":
+                                    this.reportItem[i].value = this.report.reportBeginTime;
+                                    break;
+                                case "地点":
+                                    this.reportItem[i].value = this.report.reportLocation;
+                                    break;
+                                default :
+                                    console.log("出现错误");
+                                    break;
+                            }
+                            if (this.reportItem[i].value === null) {
+                                console.log(this.reportItem[i].value);
+                                this.reportItem[i].value = "无";
+                            }
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
             }
-            return (false);
-        }
-
-        window.init = function () {
-            let reportId = getQueryVariable("reportId");
-            setSessionStorage("reportId", reportId);
-        }
-
-
+        })
     </script>
 </head>
-<body onload="init()">
-<div>
+<body>
+<div id="report">
+    <h1 class="letRowCenter report-title">{{report.reportTitle}}</h1>
+    <div class="report" v-for="item in reportItem"><label>{{item.key}}：</label><label>{{item.value}}</label></div>
+    <div class="report-detail">
+        <div>报告摘要</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{report.reportDetails}}</div>
+    </div>
+    <div class="report-reporter">
+        <div>报告人简介</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{report.reportPeopleInfo}}</div>
+    </div>
+    <div class="comments">
+        <div class="comments-title">评论区</div>
+        <div class="comment-list">
+            <comment-item v-for="index in 6" class="comment-item"></comment-item>
+            <div style="margin-top: 20px">已展示所有评论~~</div>
+        </div>
+        <div class="comments-public">
+            <div class="letColumnCenter" style="font-size: 13px">
+                <label>我的评论</label>
+                <div>
 
+                </div>
+            </div>
+            <textarea type="text" name="commentText" class="comment-input"></textarea>
+            <div class="comment-button">
+                <button>发布</button>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
 

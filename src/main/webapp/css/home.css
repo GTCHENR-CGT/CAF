@@ -19,9 +19,7 @@
     color: white;
     font-weight: bolder;
     background-color: rgb(200, 15, 15);
-
     /*flex-shrink: 1;*/
-
 }
 
 .title_item {
@@ -109,6 +107,17 @@
 
 }
 
+.search-list{
+    position: absolute;
+    width: 180px;
+    font-size: 15px;
+    border-left: silver solid 1px;
+    border-right: silver solid 1px;
+    border-top: silver solid 1px;
+    margin-top: 0;
+    background-color: white;
+    z-index: 20;
+}
 .click {
     cursor: pointer;
 }
@@ -145,3 +154,4 @@
 .report-date {
     float: right;
 }
+
