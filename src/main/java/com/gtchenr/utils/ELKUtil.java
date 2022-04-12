@@ -11,14 +11,16 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
-import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -91,7 +93,7 @@ public class ELKUtil {
             return false;
         String s = JSON.toJSONString(o);
         IndexRequest indexRequest = new IndexRequest(index);
-        indexRequest.source(s)
+        indexRequest.source(s, XContentType.JSON)
                 .timeout(TimeValue.timeValueSeconds(TIMEOUT));
         try {
             IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
@@ -151,10 +153,19 @@ public class ELKUtil {
         return false;
     }
 
+    /**
+     *
+     * @param index
+     * @param map
+     * @return
+     */
+    public static List query(String index, Map<String,Object> map){
 
-    public static Boolean createIndex(){
-        //设置mapping
-
+        return null;
     }
 
+    public static List queryAll(String index){
+
+        return null;
+    }
 }
