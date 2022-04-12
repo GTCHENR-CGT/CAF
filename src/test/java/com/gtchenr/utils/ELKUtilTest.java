@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Formatter;
+import java.util.List;
 
 public class ELKUtilTest {
 
@@ -71,5 +72,13 @@ public class ELKUtilTest {
         String book = ELKUtil.get("book", "1");
         System.out.println(book);
 
+    }
+
+    @Test
+    public void queryAllTest(){
+        List<String> strings = ELKUtil.queryAll("report",1,1);
+        for (String s:strings) {
+            System.out.println(s);
+        }
     }
 }

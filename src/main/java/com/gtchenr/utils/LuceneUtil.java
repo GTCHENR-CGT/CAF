@@ -1,3 +1,4 @@
+/*
 package com.gtchenr.utils;
 
 import java.io.IOException;
@@ -23,13 +24,15 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.*;
-import org.wltea.analyzer.lucene.IKAnalyzer;
+//import org.wltea.analyzer.lucene.IKAnalyzer;
 
+*/
 /**
  * lucene工具类
  *
  * @author Administrator
- */
+ *//*
+
 public class LuceneUtil {
 
     public static UserMapper userMapper = MybatisUtil.getSqlSession().getMapper(UserMapper.class);
@@ -38,7 +41,8 @@ public class LuceneUtil {
 
     private static final String path = "";
 
-    /**
+    */
+/**
      * 把一组对象，放入文档，创建索引
      *
      * @param list
@@ -47,7 +51,8 @@ public class LuceneUtil {
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      * @throws IOException
-     */
+     *//*
+
     public static <T> void createIndex(List<T> list, Class<T> tClass, Map map) throws InvocationTargetException, IllegalAccessException, IOException {
         //1.采集数据
         //2.创建文档对象
@@ -74,14 +79,16 @@ public class LuceneUtil {
         indexWriter.close();
     }
 
-    /**
+    */
+/**
      * @param keyword
      * @param fieldName
      * @param <T>
      * @return
      * @throws ParseException
      * @throws IOException
-     */
+     *//*
+
     public static <T> List<T> searchInFieldName(String keyword, String fieldName) throws ParseException, IOException {
 
         List<T> resultList = new LinkedList<>();
@@ -134,12 +141,14 @@ public class LuceneUtil {
         return list;
     }
 
-    /**
+    */
+/**
      * @param key
      * @param value
      * @param <T>
      * @return
-     */
+     *//*
+
     public static <T> int update(String key, T value) {
         //需要变更的内容
         return 0;
@@ -200,4 +209,4 @@ public class LuceneUtil {
         }
         return fieldList;
     }
-}
+}*/

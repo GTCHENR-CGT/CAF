@@ -10,11 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a971e580-f6b8-44e4-bfdc-f4a5db4e0296" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/ReportELK.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/ReportELKTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/use/SearchMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/CAF_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/CAF_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_magese_ik_analyzer_8_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_analyzers_common_8_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_analyzers_common_8_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_core_8_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_core_8_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queries_8_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_sandbox_8_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queryparser_8_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queryparser_8_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_sandbox_8_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queries_8_1_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CAF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CAF.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/ELKUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/ELKUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/LuceneUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/utils/LuceneUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/ELKUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/utils/ELKUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/AdminController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/PageTurnController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/PageTurnController.class" afterDir="false" />
@@ -52,15 +60,18 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/ReportServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/SearchServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/SearchServiceImp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/ELKUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/ELKUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/LuceneUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/LuceneUtil$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/LuceneUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/LuceneUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/LuceneUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/LuceneUtil.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/MybatisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/MybatisUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/TokenUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/TokenUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldCheck.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldMap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldObjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldObjects.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/ReportELK.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/ReportELK.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/QueryVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/QueryVO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/ResultVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/ResultVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ELKUtilTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ELKUtilTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ReportELKTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ReportELKTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +89,7 @@
         <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -153,14 +165,16 @@
       <recent name="E:\gtchenr\Paper\Coding\CAF\src\main\webapp\html" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportELKTest.Test">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ELKUtilTest.queryAllTest">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -197,22 +211,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ELKUtilTest.getTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CAF" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gtchenr.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gtchenr.utils" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.utils.ELKUtilTest" />
-      <option name="METHOD_NAME" value="getTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ELKUtilTest.getTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAF" />
       <extension name="coverage">
@@ -224,6 +222,22 @@
       <option name="PACKAGE_NAME" value="com.gtchenr.utils" />
       <option name="MAIN_CLASS_NAME" value="com.gtchenr.utils.ELKUtilTest" />
       <option name="METHOD_NAME" value="getTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ELKUtilTest.queryAllTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CAF" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gtchenr.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gtchenr.utils" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.utils.ELKUtilTest" />
+      <option name="METHOD_NAME" value="queryAllTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -334,20 +348,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ELKUtilTest.getTest" />
       <item itemvalue="JUnit.ELKUtilTest.getTest1" />
-      <item itemvalue="Tomcat Server.Tomcat 10.0.18" />
       <item itemvalue="JUnit.ReportELKTest.Test" />
       <item itemvalue="JUnit.ELKUtilTest.TestGet" />
       <item itemvalue="JUnit.ELKUtilTest.Test02" />
+      <item itemvalue="JUnit.ELKUtilTest.queryAllTest" />
+      <item itemvalue="Tomcat Server.Tomcat 10.0.18" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ELKUtilTest.queryAllTest" />
+        <item itemvalue="JUnit.ELKUtilTest.TestGet" />
         <item itemvalue="JUnit.ReportELKTest.Test" />
         <item itemvalue="JUnit.ELKUtilTest.Test02" />
         <item itemvalue="JUnit.ELKUtilTest.getTest1" />
-        <item itemvalue="JUnit.ELKUtilTest.TestGet" />
-        <item itemvalue="JUnit.ELKUtilTest.getTest" />
       </list>
     </recent_temporary>
   </component>
@@ -430,7 +444,8 @@
       <workItem from="1649666988761" duration="41000" />
       <workItem from="1649667043513" duration="1565000" />
       <workItem from="1649668772221" duration="7738000" />
-      <workItem from="1649731409853" duration="5749000" />
+      <workItem from="1649731409853" duration="8889000" />
+      <workItem from="1649747854922" duration="3869000" />
     </task>
     <task id="LOCAL-00001" summary="third push">
       <created>1649220219292</created>

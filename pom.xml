@@ -167,7 +167,7 @@
             <version>3.12.0</version>
         </dependency>
         <!--全文 检索-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
             <version>${lecene.version}</version>
@@ -186,7 +186,7 @@
             <groupId>com.github.magese</groupId>
             <artifactId>ik-analyzer</artifactId>
             <version>8.1.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>

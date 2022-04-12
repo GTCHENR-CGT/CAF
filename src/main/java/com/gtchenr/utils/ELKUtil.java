@@ -1,6 +1,7 @@
 package com.gtchenr.utils;
 
 import com.alibaba.fastjson.JSON;
+import com.gtchenr.utils.use.SearchMethods;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
@@ -9,6 +10,8 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -16,9 +19,16 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.AbstractQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +39,7 @@ import java.util.Map;
  * @Description ES检索工具类
  * @Since version-1.0
  */
-public class ELKUtil {
+public class ELKUtil<T> {
 
     private static String HOSTNAME = "localhost";
     private static Integer PORT = 9200;
@@ -135,6 +145,7 @@ public class ELKUtil {
 
     /**
      * 删除文档
+     *
      * @param index
      * @param id
      * @return
@@ -154,18 +165,156 @@ public class ELKUtil {
     }
 
     /**
+     * 根据请求参数创建搜索请求SearchRequest
      *
+     * @param method
      * @param index
-     * @param map
+     * @param page
+     * @param size
      * @return
      */
-    public static List query(String index, Map<String,Object> map){
+    public static SearchRequest createSearchRequest(SearchMethods method, String index, int page, int size) {
+        int from = (page - 1) * size;
+        SearchRequest request = new SearchRequest(index);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.from(from)
+                .size(size)
+                .query(selectSearchMethod(method));
+        request.source(searchSourceBuilder);
+        return request;
+    }
 
+    /**
+     * 方法重载
+     *
+     * @param method
+     * @param index
+     * @return
+     */
+    public static SearchRequest createSearchRequest(SearchMethods method, String index) {
+        SearchRequest request = new SearchRequest(index);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(selectSearchMethod(method));
+        request.source(searchSourceBuilder);
+        return request;
+    }
+
+    /**
+     * 选择进行query的方法
+     *
+     * @param method
+     * @return
+     */
+    public static AbstractQueryBuilder selectSearchMethod(SearchMethods method) {
+
+        switch (method) {
+            case MATCH_ALL:
+                return QueryBuilders.matchAllQuery();
+        }
         return null;
     }
 
-    public static List queryAll(String index){
-
-        return null;
+    /**
+     * client通过SearchRequest获取SearchResponse
+     *
+     * @param searchRequest
+     * @return
+     */
+    public static SearchResponse getSearchResponse(SearchRequest searchRequest) {
+        try {
+            SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+            return searchResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
+
+    /**
+     * 对SearchResponse进行数据获取，得到的数据根据匹配度进行排序
+     *
+     * @param response
+     * @return
+     */
+    public static List<String> parseSearchResponse(SearchResponse response) {
+        List<String> list = new ArrayList<>();
+        SearchHit[] hits1 = response.getHits().getHits();
+        for (SearchHit hit : hits1) {
+            String id = hit.getId();
+            float score = hit.getScore();
+            String sourceAsString = hit.getSourceAsString();
+            list.add(sourceAsString);
+        }
+        return list;
+    }
+
+
+    /**
+     * 进行查找,并对其的匹配分数进行排序，匹配度由高到低
+     *
+     * @param method
+     * @param index
+     * @param map
+     * @param page
+     * @param size
+     * @return
+     */
+    public static List query(SearchMethods method, String index, Map<String, Object> map, int page, int size) {
+
+        SearchRequest searchRequest = createSearchRequest(method, index, page, size);
+        SearchResponse searchResponse = getSearchResponse(searchRequest);
+        return parseSearchResponse(searchResponse);
+    }
+
+    /**
+     * 方法重载
+     *
+     * @param method
+     * @param index
+     * @return
+     */
+    public static List query(SearchMethods method, String index) {
+
+        SearchRequest searchRequest = createSearchRequest(method, index);
+        SearchResponse searchResponse = getSearchResponse(searchRequest);
+        return parseSearchResponse(searchResponse);
+    }
+
+    /**
+     * 方法重载
+     *
+     * @param method
+     * @param index
+     * @param page
+     * @param size
+     * @return
+     */
+    public static List query(SearchMethods method, String index, int page, int size) {
+        SearchRequest searchRequest = createSearchRequest(method, index, page, size);
+        SearchResponse searchResponse = getSearchResponse(searchRequest);
+        return parseSearchResponse(searchResponse);
+    }
+
+    /**
+     * 查找索引的所有文档
+     *
+     * @param index
+     * @return
+     */
+    public static List queryAll(String index) {
+        return query(SearchMethods.MATCH_ALL, index);
+    }
+
+    /**
+     * 分页查找所有文档
+     *
+     * @param index
+     * @param page
+     * @param size
+     * @return
+     */
+    public static List queryAll(String index, int page, int size) {
+        return query(SearchMethods.MATCH_ALL, index, page, size);
+    }
+    
 }
