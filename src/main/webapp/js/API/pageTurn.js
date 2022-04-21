@@ -14,3 +14,8 @@ export function navigateToReport(reportId) {
     console.log(reportId)
     return navigateTo(pageUrls.reportDetail + "?reportId=" + reportId);
 }
+
+export function navigateToPublishReport() {
+
+    return navigateTo(pageUrls.publishReport);
+}

@@ -9,9 +9,9 @@
     <!--数据库配置文件-->
     <properties resource="jdbc.properties"></properties>
 
-<!--    <settings>
-        <setting name="logImpl" value="LOG4J"/>
-    </settings>-->
+    <!--    <settings>
+            <setting name="logImpl" value="LOG4J"/>
+        </settings>-->
 
     <typeAliases>
         <package name="com.gtchenr.pojo"/>

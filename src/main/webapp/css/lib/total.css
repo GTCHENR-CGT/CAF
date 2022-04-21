@@ -1,29 +1,28 @@
 
-.letRowCenter{
-	display: flex;
-	justify-content: center;
-} 
-
-.letColumnCenter{
-	display: flex;
-	align-items: center;
-	
+.letRowCenter {
+    display: flex;
+    justify-content: center;
 }
 
-.letallCenter{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	
+.letColumnCenter {
+    display: flex;
+    align-items: center;
 }
 
-.flex-row{
-	display: flex;
+.letallCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
-.flex-row-reverse{
-	display: flex;
-	flex-direction: row-reverse;
+.flex-row {
+    display: flex;
+}
+
+.flex-row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .flex-column {

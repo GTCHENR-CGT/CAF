@@ -14,8 +14,9 @@ public class MybatisUtil {
     private static SqlSessionFactory sqlSessionFactory;
 
     static {
-        try (Reader reader = Resources.getResourceAsReader("mybatis.xml")){
+        try (Reader reader = Resources.getResourceAsReader("mybatis.xml")) {
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+            sqlSessionFactory.openSession(true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,23 +24,30 @@ public class MybatisUtil {
 
     /**
      * 获取连接
+     *
      * @return
      */
-    public static SqlSession getSqlSession(){
+    public static SqlSession getSqlSession() {
 
         SqlSession sqlSession = sqlSessionThreadLocal.get();
-        if(sqlSession == null)
-            sqlSessionThreadLocal.set(sqlSessionFactory.openSession());
+        if (sqlSession == null)
+            sqlSessionThreadLocal.set(sqlSessionFactory.openSession(true));
         return sqlSessionThreadLocal.get();
     }
 
     /**
      * 关闭连接
      */
-    public static void closeSqlSession(){
+    public static void closeSqlSession() {
         SqlSession sqlSession = sqlSessionThreadLocal.get();
-        if(sqlSession != null)
+        if (sqlSession != null)
             sqlSession.close();
+
+    }
+
+    public static SqlSession getSqlSession1() {
+
+        return sqlSessionFactory.openSession(true);
 
     }
 }

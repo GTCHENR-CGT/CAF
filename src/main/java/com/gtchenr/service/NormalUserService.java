@@ -5,7 +5,7 @@ import com.gtchenr.pojo.User;
 
 public interface NormalUserService {
 
-    boolean login(String loginName,String password);
+    boolean login(String loginName, String password);
 
     User user(String loginName);
 

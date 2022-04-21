@@ -107,7 +107,7 @@
 
 }
 
-.search-list{
+.search-list {
     position: absolute;
     width: 180px;
     font-size: 15px;
@@ -118,6 +118,7 @@
     background-color: white;
     z-index: 20;
 }
+
 .click {
     cursor: pointer;
 }
@@ -153,5 +154,12 @@
 
 .report-date {
     float: right;
+}
+
+.publish {
+    position: fixed;
+    bottom: 150px;
+    right: 150px;
+    z-index: 9999;
 }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class ReportServiceImpl implements ReportService {
-    ReportMapper reportMapper = MybatisUtil.getSqlSession().getMapper(ReportMapper.class);
+    ReportMapper reportMapper = MybatisUtil.getSqlSession1().getMapper(ReportMapper.class);
 
     @Override
     public Report getReportById(Integer id) {
@@ -20,5 +20,20 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<Report> getReports() {
         return reportMapper.queryReportsInfo();
+    }
+
+    @Override
+    public boolean add(Report report) {
+        if (report == null)
+            return false;
+        System.out.println(report);
+        Integer add = reportMapper.add(report);
+        System.out.println(add);
+        if (add == 1) {
+            MybatisUtil.getSqlSession().commit();
+            System.out.println("完成");
+            return true;
+        }
+        return false;
     }
 }

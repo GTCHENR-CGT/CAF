@@ -9,18 +9,18 @@ import java.util.List;
 public class ReportMapperTest {
 
     ReportMapper reportMapper = MybatisUtil.getSqlSession().getMapper(ReportMapper.class);
-    
+
     @Test
-    public void queryAllTest(){
+    public void queryAllTest() {
         Report report = new Report();
         List<Report> reports = reportMapper.queryReports();
-        for (Report r:reports) {
+        for (Report r : reports) {
             System.out.println(r);
         }
     }
 
     @Test
-    public void  queryReportByIdTest(){
+    public void queryReportByIdTest() {
         Report report = reportMapper.queryReportInfoById(1);
         System.out.println(report);
     }
@@ -39,5 +39,14 @@ public class ReportMapperTest {
         for (Report r : reports) {
             System.out.println(r);
         }
+    }
+
+    @Test
+    public void addTest() {
+        Report report = new Report();
+        report.setReportId(10);
+        report.setUserId(1);
+        Integer add = reportMapper.add(report);
+        System.out.println(add);
     }
 }

@@ -6,28 +6,38 @@
 <mapper namespace="com.gtchenr.mapper.UserMapper">
 
     <select id="login" resultType="java.lang.Integer">
-        select count(user_id) from user where login_name=#{arg0} and password=#{arg1};
+        select count(user_id)
+        from user
+        where login_name = #{arg0}
+          and password = #{arg1};
     </select>
 
     <select id="exist" resultType="java.lang.Integer">
-        select count(user_id) from user where login_name=#{arg0};
+        select count(user_id)
+        from user
+        where login_name = #{arg0};
     </select>
 
     <select id="queryUserByUserId" parameterType="java.lang.Integer" resultMap="baseMap">
-        select * from user where user_id=#{id};
+        select *
+        from user
+        where user_id = #{id};
     </select>
 
     <select id="queryUserByLoginName" parameterType="java.lang.String" resultMap="baseMap">
-        select * from user where login_name=#{arg0}
+        select *
+        from user
+        where login_name = #{arg0}
     </select>
 
     <select id="queryAll" resultMap="baseMap">
-        select * from user;
+        select *
+        from user;
     </select>
 
     <insert id="add" parameterType="User">
-        insert into user(role_id,login_name,password,name,sex,phone,email)
-        value (#{roleId},#{loginName},#{password},#{name},#{sex},#{phone},#{email})
+        insert into user(role_id, login_name, password, name, sex, phone, email)
+            value (#{roleId},#{loginName},#{password},#{name},#{sex},#{phone},#{email})
     </insert>
     <resultMap id="baseMap" type="User">
         <result column="user_id" property="userId"/>

@@ -12,6 +12,7 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
 
     private UserMapper userMapper = MybatisUtil.getSqlSession().getMapper(UserMapper.class);
+
     @Override
     public List<User> Users() {
         return userMapper.queryAll();

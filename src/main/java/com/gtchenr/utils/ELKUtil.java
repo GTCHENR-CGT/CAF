@@ -173,13 +173,13 @@ public class ELKUtil<T> {
      * @param size
      * @return
      */
-    public static SearchRequest createSearchRequest(SearchMethods method, String index, int page, int size) {
+    public static SearchRequest createSearchRequest(SearchMethods method, String index, int page, int size, String text, String... param) {
         int from = (page - 1) * size;
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.from(from)
                 .size(size)
-                .query(selectSearchMethod(method));
+                .query(selectSearchMethod(method, text, param));
         request.source(searchSourceBuilder);
         return request;
     }
@@ -191,10 +191,10 @@ public class ELKUtil<T> {
      * @param index
      * @return
      */
-    public static SearchRequest createSearchRequest(SearchMethods method, String index) {
+    public static SearchRequest createSearchRequest(SearchMethods method, String index, String text, String... param) {
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.query(selectSearchMethod(method));
+        searchSourceBuilder.query(selectSearchMethod(method, text, param));
         request.source(searchSourceBuilder);
         return request;
     }
@@ -205,11 +205,17 @@ public class ELKUtil<T> {
      * @param method
      * @return
      */
-    public static AbstractQueryBuilder selectSearchMethod(SearchMethods method) {
+    public static AbstractQueryBuilder selectSearchMethod(SearchMethods method, String text, String... param) {
 
         switch (method) {
             case MATCH_ALL:
                 return QueryBuilders.matchAllQuery();
+            case MULTI_MATCH:
+                return QueryBuilders.multiMatchQuery(text, param);
+            case IDS_SEARCH:
+                return QueryBuilders.idsQuery().addIds(param);
+            case MATCH_SEARCH:
+                return QueryBuilders.matchQuery(param[0], text);
         }
         return null;
     }
@@ -254,14 +260,13 @@ public class ELKUtil<T> {
      *
      * @param method
      * @param index
-     * @param map
      * @param page
      * @param size
      * @return
      */
-    public static List query(SearchMethods method, String index, Map<String, Object> map, int page, int size) {
+    public static List query(SearchMethods method, String index, int page, int size, String text, String... param) {
 
-        SearchRequest searchRequest = createSearchRequest(method, index, page, size);
+        SearchRequest searchRequest = createSearchRequest(method, index, page, size, text, param);
         SearchResponse searchResponse = getSearchResponse(searchRequest);
         return parseSearchResponse(searchResponse);
     }
@@ -273,27 +278,13 @@ public class ELKUtil<T> {
      * @param index
      * @return
      */
-    public static List query(SearchMethods method, String index) {
+    public static List query(SearchMethods method, String index, String text, String... param) {
 
-        SearchRequest searchRequest = createSearchRequest(method, index);
+        SearchRequest searchRequest = createSearchRequest(method, index, text, param);
         SearchResponse searchResponse = getSearchResponse(searchRequest);
         return parseSearchResponse(searchResponse);
     }
 
-    /**
-     * 方法重载
-     *
-     * @param method
-     * @param index
-     * @param page
-     * @param size
-     * @return
-     */
-    public static List query(SearchMethods method, String index, int page, int size) {
-        SearchRequest searchRequest = createSearchRequest(method, index, page, size);
-        SearchResponse searchResponse = getSearchResponse(searchRequest);
-        return parseSearchResponse(searchResponse);
-    }
 
     /**
      * 查找索引的所有文档
@@ -302,7 +293,7 @@ public class ELKUtil<T> {
      * @return
      */
     public static List queryAll(String index) {
-        return query(SearchMethods.MATCH_ALL, index);
+        return query(SearchMethods.MATCH_ALL, index, "");
     }
 
     /**
@@ -314,7 +305,44 @@ public class ELKUtil<T> {
      * @return
      */
     public static List queryAll(String index, int page, int size) {
-        return query(SearchMethods.MATCH_ALL, index, page, size);
+        return query(SearchMethods.MATCH_ALL, index, page, size, "");
     }
-    
+
+    /**
+     * @param index
+     * @param page
+     * @param size
+     * @param param
+     * @return
+     */
+    public static List queryByMulti(String index, int page, int size, String text, String... param) {
+        return query(SearchMethods.MULTI_MATCH, index, page, size, text, param);
+    }
+
+    /**
+     * Ids搜索
+     *
+     * @param index
+     * @param param
+     * @return
+     */
+    public static List queryByIds(String index, String... param) {
+
+        return query(SearchMethods.IDS_SEARCH, index, "", param);
+    }
+
+    /**
+     * Match搜索
+     *
+     * @param index
+     * @param page
+     * @param size
+     * @param text
+     * @param name
+     * @return
+     */
+    public static List<String> queryByMatch(String index, int page, int size, String text, String name) {
+
+        return query(SearchMethods.MATCH_SEARCH, index, page, size, text, name);
+    }
 }

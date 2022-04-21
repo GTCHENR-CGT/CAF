@@ -19,10 +19,10 @@
 
     <!-- 配置拦截器 -->
     <mvc:interceptors>
-    <!--可以按顺序配置多个拦截器-->
+        <!--可以按顺序配置多个拦截器-->
         <mvc:interceptor>
             <mvc:mapping path="/normalUser/**"/>
-<!--            <mvc:exclude-mapping path="normalUser/hello"/>-->
+            <!--            <mvc:exclude-mapping path="normalUser/hello"/>-->
             <bean class="com.gtchenr.interceptor.MyInterceptor" id="myinterceptor"></bean>
         </mvc:interceptor>
         <mvc:interceptor>

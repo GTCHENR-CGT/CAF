@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布报告</title>
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/lib/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/lib/icon.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3274788_9adk7b8pp9m.css">
+    <style lang="css">
+        @import "../css/publishReport.css";
+        @import "../css/lib/total.css";
+    </style>
+    <script type="module">
+        import {publish,publish1} from "../js/service/publish/service.js"
+        import {navigateToHome} from "../js/API/pageTurn.js";
+
+        let vm = new Vue({
+            el: "#publish",
+            components: {},
+            data: function () {
+                return {}
+            },
+            methods: {
+                publishReport: function () {
+                    let data = $('#report').serialize();
+                    console.log(data);
+                    publish(data)
+                        .then((res) => {
+                            console.log(res);
+                            if(res.statusCode === 201){
+                                alert("发布成功，跳转返回主页！")
+                                navigateToHome();
+                            }else if(res.statusCode === 202){
+                                alert("发布失败，请检测输入！或者是否处于登录状态！");
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
+                }
+
+
+            }
+        })
+    </script>
+</head>
+<body>
+<div id="publish">
+    <h1 class="letRowCenter">填写报告内容</h1>
+    <div class="letRowCenter">
+        <form class="contain letRowCenter" name="report" method="post" id="report">
+            <div class="flex-row">
+                <div>报告题目</div><input type="text" name="reportTitle"/>
+            </div>
+            <div class="flex-row">
+                <div>报告人</div><input type="text" name="reportPeople"/>
+            </div>
+            <div class="flex-row">
+                <div>组织者</div><input type="text" name="reportOrganizer"/>
+            </div>
+            <div class="flex-row">
+                <div>地点</div><input type="text" name="reportLocation"/>
+            </div>
+            <div class="flex-row">
+                <div>开始时间</div><input type="text" name="reportLocation"/>
+            </div>
+            <div class="flex-row">
+                <div>结束时间</div><input type="text" name="reportLocation"/>
+            </div>
+            <div class="flex-row">
+                <div>报告摘要</div>
+                <textarea name="reportDetails"></textarea>
+            </div>
+            <div class="flex-row">
+                <div>报告人简介</div>
+                <textarea name="reportPeopleInfo"></textarea>
+            </div>
+            <div class="letallCenter">
+                <button @click="publishReport" type="button">发布</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+

@@ -12,47 +12,48 @@ public class ReportELK {
     private final static Class<Report> REPORT_CLASS = Report.class;
 
 
-    public static void add(List<Report> reports){
-        for (Report report:reports) {
-            ELKUtil.add(INDEX,report);
+    public static void add(List<Report> reports) {
+        for (Report report : reports) {
+            ELKUtil.add(INDEX, report);
         }
     }
 
-    public static void add(Report report){
-        ELKUtil.add(INDEX,report);
+    public static void add(Report report) {
+        ELKUtil.add(INDEX, report);
     }
 
-    public static Report get(String docId){
+    public static Report get(String docId) {
         String s = ELKUtil.get(INDEX, docId);
         Report report = JSON.parseObject(s, REPORT_CLASS);
         return report;
     }
 
-    public static void getAll(){
+    public static void getAll() {
 
     }
 
-    public static void queryByReportId(Integer reportId){
+    public static Report queryByReportId(Integer reportId) {
+        String reportJson = ELKUtil.queryByMatch(INDEX, 1, 10, String.valueOf(reportId), "reportId").get(0);
+        return JSON.parseObject(reportJson, REPORT_CLASS);
+    }
+
+    public static void queryByReportTitle(String reportTitle) {
 
     }
 
-    public static void queryByReportTitle(String reportTitle){
+    public static void queryByKeywords(String keyword) {
 
     }
 
-    public static void queryByKeywords(String keyword){
+    public static void queryByReportPeople(String reportPeople) {
 
     }
 
-    public static void queryByReportPeople(String reportPeople){
+    public static void queryByReportDetails(String reportDetails) {
 
     }
 
-    public static void queryByReportDetails(String reportDetails){
-
-    }
-
-    public static void queryByReportPeopleInfo(String reportPeopleInfo){
+    public static void queryByReportPeopleInfo(String reportPeopleInfo) {
 
     }
 }

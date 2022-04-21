@@ -11,31 +11,31 @@ public class UserMapperTest {
     UserMapper userMapper = MybatisUtil.getSqlSession().getMapper(UserMapper.class);
 
     @Test
-    public void loginTest(){
-        System.out.println(userMapper.login("gtchenr","123456"));
+    public void loginTest() {
+        System.out.println(userMapper.login("gtchenr", "123456"));
     }
 
     @Test
-    public void existTest(){
+    public void existTest() {
         System.out.println(userMapper.exist("guan"));
     }
 
     @Test
-    public void queryUserByUserIdTest(){
+    public void queryUserByUserIdTest() {
         User user = userMapper.queryUserByUserId(2);
         System.out.println(user);
     }
 
     @Test
-    public void queryAllTest(){
+    public void queryAllTest() {
         List<User> users = userMapper.queryAll();
-        for (User u:users) {
+        for (User u : users) {
             System.out.println(u);
         }
     }
 
     @Test
-    public void addTest(){
+    public void addTest() {
         User user = new User();
         user.setRoleId(6);
         user.setLoginName("chen1");
@@ -45,7 +45,7 @@ public class UserMapperTest {
     }
 
     @Test
-    public void userTest(){
+    public void userTest() {
 
         User user = userMapper.queryUserByLoginName("gtchenr");
         System.out.println(user);

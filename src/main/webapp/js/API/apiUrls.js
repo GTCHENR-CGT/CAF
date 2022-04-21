@@ -6,5 +6,7 @@ export default {
     authorizationUrl: userPath + "/authorization",
     getReportUrlByNewest: recommend + "/newest",
     getReports: report + "/reports",
-    getReportById: report + "/"
+    getReportById: report + "/",
+    publishReport: report + "/publish",
+    publishReport1: report+ "/publish1"
 };

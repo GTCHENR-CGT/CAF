@@ -27,16 +27,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.2.13.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.6" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:5.2.13.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.0.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.0.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.0.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.0.6.RELEASE" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
-          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-to-slf4j:2.10.0" />
-          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.25" />
-          <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.19" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.6" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.3.3" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
@@ -73,6 +63,7 @@
           <element id="library" level="project" name="Maven: org.elasticsearch:elasticsearch-core:7.3.0" />
           <element id="library" level="project" name="Maven: org.elasticsearch:elasticsearch-secure-sm:7.3.0" />
           <element id="library" level="project" name="Maven: org.elasticsearch:elasticsearch-x-content:7.3.0" />
+          <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.17" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.8.11" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.8.11" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.8.11" />

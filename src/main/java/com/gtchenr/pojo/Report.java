@@ -25,7 +25,6 @@ public class Report {
     }
 
 
-
     public Date getReportBeginTime() {
         return reportBeginTime;
     }

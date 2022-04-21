@@ -31,6 +31,24 @@ import org.apache.lucene.store.*;
  * lucene工具类
  *
  * @author Administrator
+ * <p>
+ * 把一组对象，放入文档，创建索引
+ * @param list
+ * @param tClass
+ * @param <T>
+ * @throws InvocationTargetException
+ * @throws IllegalAccessException
+ * @throws IOException
+ * @param keyword
+ * @param fieldName
+ * @param <T>
+ * @return
+ * @throws ParseException
+ * @throws IOException
+ * @param key
+ * @param value
+ * @param <T>
+ * @return
  *//*
 
 public class LuceneUtil {
@@ -43,15 +61,15 @@ public class LuceneUtil {
 
     */
 /**
-     * 把一组对象，放入文档，创建索引
-     *
-     * @param list
-     * @param tClass
-     * @param <T>
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
-     * @throws IOException
-     *//*
+ * 把一组对象，放入文档，创建索引
+ *
+ * @param list
+ * @param tClass
+ * @param <T>
+ * @throws InvocationTargetException
+ * @throws IllegalAccessException
+ * @throws IOException
+ *//*
 
     public static <T> void createIndex(List<T> list, Class<T> tClass, Map map) throws InvocationTargetException, IllegalAccessException, IOException {
         //1.采集数据
@@ -81,13 +99,13 @@ public class LuceneUtil {
 
     */
 /**
-     * @param keyword
-     * @param fieldName
-     * @param <T>
-     * @return
-     * @throws ParseException
-     * @throws IOException
-     *//*
+ * @param keyword
+ * @param fieldName
+ * @param <T>
+ * @return
+ * @throws ParseException
+ * @throws IOException
+ *//*
 
     public static <T> List<T> searchInFieldName(String keyword, String fieldName) throws ParseException, IOException {
 
@@ -143,11 +161,11 @@ public class LuceneUtil {
 
     */
 /**
-     * @param key
-     * @param value
-     * @param <T>
-     * @return
-     *//*
+ * @param key
+ * @param value
+ * @param <T>
+ * @return
+ *//*
 
     public static <T> int update(String key, T value) {
         //需要变更的内容

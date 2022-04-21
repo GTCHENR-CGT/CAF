@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>校园学术论坛首页</title>
     <link rel="stylesheet" type="text/css" href="../css/lib/icon.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_3274788_9adk7b8pp9m.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3274788_tzt1v2xsvuh.css">
 
     <style lang="css">
         @import "../css/home.css";
@@ -59,10 +59,6 @@
                                              style="font-size: 20px;align-content: center"></span></div>
     </div>
 
-
-
-
-
     <div class="flex-row letRowCenter">
         <!--论坛版块-->
         <div class="notice">
@@ -85,10 +81,14 @@
             </dl>
         </div>
     </div>
+    <div class="publish click" @click="publish">
+        <i class="iconfont icon-fabu" style="font-size: 40px"></i>
+    </div>
 </div>
+
 <script type="module">
     import {getReportUrlByNewest, getReports} from "../js/service/home/service.js";
-    import {navigateToReport} from "../js/API/pageTurn.js";
+    import {navigateToReport, navigateToPublishReport} from "../js/API/pageTurn.js";
 
     let reportItem = {
         props: {
@@ -160,6 +160,10 @@
             navigateToReportDetail: function (reportId) {
                 navigateToReport(reportId);
             },
+
+            publish: function () {
+                navigateToPublishReport()
+            }
         },
         mounted() {
             getReports()

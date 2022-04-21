@@ -57,7 +57,7 @@ public class UserController {
             datalist.add(refreshToken);
             return new ResultVO<List<String>>(200, "success", datalist);
         }
-        return new ResultVO(201, "fail",null);
+        return new ResultVO(201, "fail", null);
     }
 
     @RequestMapping("/hello.do")
@@ -83,7 +83,7 @@ public class UserController {
     }
 
     @RequestMapping("hello")
-    public String hello(){
+    public String hello() {
 
         return "hello";
     }

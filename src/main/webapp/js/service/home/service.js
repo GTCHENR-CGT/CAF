@@ -6,7 +6,7 @@ export function getReportUrlByNewest() {
     return httpInstance.get(apiUrls.getReportUrlByNewest);
 }
 
-export function getReports(){
+export function getReports() {
 
     return httpInstance.get(apiUrls.getReports,);
 }

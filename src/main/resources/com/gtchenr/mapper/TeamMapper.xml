@@ -5,7 +5,8 @@
 
 <mapper namespace="com.gtchenr.mapper.TeamMapper">
     <select id="queryAll" resultType="Team">
-        select * from team;
+        select *
+        from team;
     </select>
 
 

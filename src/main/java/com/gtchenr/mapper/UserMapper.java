@@ -8,11 +8,12 @@ public interface UserMapper {
 
     /**
      * 通过账号和密码验证登录
+     *
      * @param loginName
      * @param password
      * @return
      */
-    Integer login(String loginName,String password);
+    Integer login(String loginName, String password);
 
     Integer exist(String loginName);
 

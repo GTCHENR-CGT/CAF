@@ -5,10 +5,11 @@
 
 <mapper namespace="com.gtchenr.mapper.RoleMapper">
     <select id="queryAll" resultMap="baseMap">
-        select * from role;
+        select *
+        from role;
     </select>
 
-    <insert id="add" parameterType="Role">
+    <insert id="add" parameterType="com.gtchenr.pojo.Role">
         <selectKey keyProperty="roleId" order="AFTER" resultType="java.lang.Integer">
             select LAST_INSERT_ID();
         </selectKey>
@@ -17,11 +18,15 @@
     </insert>
 
     <select id="queryByRoleId" parameterType="java.lang.Integer" resultMap="baseMap">
-        select * from role where role_id=#{id};
+        select *
+        from role
+        where role_id = #{id};
     </select>
 
     <delete id="delete" parameterType="java.lang.Integer">
-        delete from role where role_id=#{id};
+        delete
+        from role
+        where role_id = #{id};
     </delete>
 
     <resultMap id="baseMap" type="Role">

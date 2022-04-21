@@ -5,7 +5,7 @@ import org.junit.Test;
 public class AdminControllerTest {
 
     @Test
-    public void test01(){
+    public void test01() {
 
     }
 }

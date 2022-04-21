@@ -22,6 +22,12 @@
         select report_id, report_title, report_people
         from report
     </select>
+    <insert id="add" parameterType="Report">
+        insert into report(board_id, report_title, report_organizer, report_introduction, report_details, report_people,
+                           report_begin_time, report_end_time, report_location, report_people_info)
+        values (#{boardId}, #{reportTitle}, #{reportOrganizer}, #{reportIntroduction}, #{reportDetails},
+                #{reportPeople}, #{reportBeginTime}, #{reportEndTime}, #{reportLocation}, #{reportPeopleInfo})
+    </insert>
 
     <resultMap id="baseMap" type="Report">
         <result column="report_id" property="reportId"/>

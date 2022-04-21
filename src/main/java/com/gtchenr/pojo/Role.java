@@ -13,9 +13,9 @@ public class Role {
     public static final String NORMAL_USER = "normal_user";
     public static final Integer UN_PERMISSION = 0;
     public static final Integer HAVE_PERMISSION = 1;
-//    @Value("1")
+    //    @Value("1")
     private Integer roleId;
-//    @Value("super_administrator")
+    //    @Value("super_administrator")
     private String roleName;
     //    @Value("1")
     private Integer statue;

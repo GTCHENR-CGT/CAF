@@ -18,4 +18,10 @@ public class PageTurnController {
         System.out.println("navigateToReportDetail--------");
         return new ModelAndView("reportDetail");
     }
+
+    @RequestMapping("publishReport")
+    public ModelAndView navigateToPublishReport() {
+        System.out.println("navigateToPublishReport-------------");
+        return new ModelAndView("publishReport");
+    }
 }

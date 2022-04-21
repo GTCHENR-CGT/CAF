@@ -22,12 +22,12 @@ public class AdminDaoImp extends JdbcDaoSupport implements AdminDao {
 
     @Override
     public int updatePermission(User user, Role role) {
-        if(!userExist(user) || user == null)
+        if (!userExist(user) || user == null)
             return -1;
         if (checkRole(user).equals(role))
             return -2;
         String sql = "update role r inner join user u on r.role_id=u.role_id set r.role_name=?,r.role_statue=? where u.role_id=?";
-        return getJdbcTemplate().update(sql,new Object[]{role.getRoleName(),role.getStatue(),user.getUserId()});
+        return getJdbcTemplate().update(sql, new Object[]{role.getRoleName(), role.getStatue(), user.getUserId()});
     }
 
     @Override
@@ -62,20 +62,20 @@ public class AdminDaoImp extends JdbcDaoSupport implements AdminDao {
 
     @Override
     public int denyAdminPermission(User user) {
-        if(!checkRole(user).getRoleName().equals(Role.ADMINISTRATION))
+        if (!checkRole(user).getRoleName().equals(Role.ADMINISTRATION))
             return -1;
         Role role = new Role();
         role.setRoleName(Role.NORMAL_USER);
         role.setStatue(Role.HAVE_PERMISSION);
-        return updatePermission(user,role);
+        return updatePermission(user, role);
     }
 
     @Override
     public int denyNormalPermission(User user) {
         if (!checkRole(user).getRoleName().equals(Role.NORMAL_USER))
             return -1;
-        Role role = new Role(Role.NORMAL_USER,Role.UN_PERMISSION);
-        return updatePermission(user,role);
+        Role role = new Role(Role.NORMAL_USER, Role.UN_PERMISSION);
+        return updatePermission(user, role);
     }
 
 

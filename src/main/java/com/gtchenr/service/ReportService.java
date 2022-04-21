@@ -13,4 +13,6 @@ public interface ReportService {
 
     List<Report> getReports();
 
+    boolean add(Report report);
+
 }

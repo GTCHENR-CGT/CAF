@@ -15,9 +15,10 @@ public class NormalUserServiceImpl implements NormalUserService {
 
     private UserMapper userMapper = MybatisUtil.getSqlSession().getMapper(UserMapper.class);
     private RoleMapper roleMapper = MybatisUtil.getSqlSession().getMapper(RoleMapper.class);
+
     @Override
     public boolean login(String loginName, String password) {
-        if(userMapper.login(loginName,password) == 1)
+        if (userMapper.login(loginName, password) == 1)
             return true;
         return false;
     }
@@ -40,7 +41,6 @@ public class NormalUserServiceImpl implements NormalUserService {
     public Role role(User user) {
         return roleMapper.queryByRoleId(user.getRoleId());
     }
-
 
 
 }

@@ -15,10 +15,11 @@ import java.util.List;
 public class TeamMapperTest {
 
     TeamMapper teamMapper = MybatisUtil.getSqlSession().getMapper(TeamMapper.class);
+
     @Test
-    public void test01(){
+    public void test01() {
         List<Team> teams = teamMapper.queryAll();
-        for (Team t:teams) {
+        for (Team t : teams) {
             System.out.println(t);
         }
     }

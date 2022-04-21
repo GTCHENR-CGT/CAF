@@ -21,7 +21,7 @@ public class AdminController {
 
     @RequestMapping("users")
     @ResponseBody
-    public List<User> getAllUser(){
+    public List<User> getAllUser() {
         return adminService.Users();
     }
 }

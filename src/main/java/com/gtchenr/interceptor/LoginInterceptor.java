@@ -10,6 +10,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     /**
      * 如果token不存在或者token过期，允许往下执行，如果token不存在，则拦截本次请求。
+     *
      * @param request
      * @param response
      * @param handler
@@ -19,6 +20,6 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-            return true;
+        return true;
     }
 }

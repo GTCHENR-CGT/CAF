@@ -21,7 +21,6 @@ public class ResultVO<T> {
     }
 
 
-
     public int getStatusCode() {
         return statusCode;
     }

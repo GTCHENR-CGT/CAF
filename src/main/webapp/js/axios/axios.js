@@ -9,7 +9,9 @@
  * 7、request正式返回，请求结束
  */
 import config from "./axios.config.js";
-const noonFunc = () => { };
+
+const noonFunc = () => {
+};
 
 export class Axios {
     constructor() {
@@ -45,14 +47,14 @@ export class Axios {
      * @param token
      */
     static create({
-        baseURL = "http://localhost:8080",
-        timeout = 5000,
-        method = "GET",
-        dataType = "json",
-        responseType = "text",
-        ContentType = "application/json",
-        token = "",
-    } = {}) {
+                      baseURL = "http://localhost:8080",
+                      timeout = 5000,
+                      method = "GET",
+                      dataType = "json",
+                      responseType = "text",
+                      ContentType = "application/json",
+                      token = "",
+                  } = {}) {
         const axios = new Axios();
         axios.config = {
             baseURL,
@@ -196,7 +198,7 @@ export class Axios {
                         url: (this._checkIsOriginRequest(config.url) ? "" : this.config.baseURL) +
                             config.url,
                         files: config.data.files,
-                        formData:config.data.formData,
+                        formData: config.data.formData,
                         header: {
                             token: config.token,
                         },
@@ -227,9 +229,9 @@ export class Axios {
                     header: {
                         "Content-Type": config.ContentType,
                     },
-                    beforeSend:(request)=>{
-                        request.setRequestHeader("accessToken",config.accessToken);
-                        request.setRequestHeader("refreshToken",config.refreshToken);
+                    beforeSend: (request) => {
+                        request.setRequestHeader("accessToken", config.accessToken);
+                        request.setRequestHeader("refreshToken", config.refreshToken);
                     },
                     success: (res) => {
                         console.log(res);

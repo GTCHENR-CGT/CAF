@@ -10,21 +10,21 @@
     </style>
     <script type="text/javascript" src="js/lib/jquery-1.11.1.min.js"></script>
     <script type="module">
-        import {login,authorization} from "./js/service/login/service.js";
+        import {login, authorization} from "./js/service/login/service.js";
         import {setStorage} from "./js/API/common.js";
         import {navigateToHome} from "./js/API/pageTurn.js"
 
-        window.login1 = function (){
+        window.login1 = function () {
             let data = $('#loginForm').serialize();
             login(data)
                 .then((res) => {
                         if (res.statusCode === 200) {
-                            if(res.data != null){
-                                setStorage("accessToken",res.data[0]);
-                                setStorage("refreshToken",res.data[1]);
+                            if (res.data != null) {
+                                setStorage("accessToken", res.data[0]);
+                                setStorage("refreshToken", res.data[1]);
                             }
                             authorization1();
-                        }else {
+                        } else {
                             console.log("登录失败");
                             $("#sign").show().delay(1500).fadeOut();
                         }
@@ -33,15 +33,15 @@
                     }
                 )
         }
-        window.authorization1 = function (){
+        window.authorization1 = function () {
             $("#sign").hide();
             authorization()
-                .then((res)=>{
-                    if(res.data) {
+                .then((res) => {
+                    if (res.data) {
                         //处于完成登录的界面情况
                         navigateToHome();
                         console.log("处于完成登录的界面情况")
-                    }else {
+                    } else {
                         console.log("处于登录界面")
                         //处于登录界面
                     }
