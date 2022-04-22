@@ -1,6 +1,7 @@
 let userPath = "/normalUser";
 let recommend = "/recommend";
-let report = "/report"
+let report = "/report";
+let admin = "/admin";
 export default {
     loginUrl: userPath + "/login",
     authorizationUrl: userPath + "/authorization",
@@ -8,5 +9,6 @@ export default {
     getReports: report + "/reports",
     getReportById: report + "/",
     publishReport: report + "/publish",
-    publishReport1: report+ "/publish1"
+    publishReport1: report+ "/publish1",
+    deleteReport: admin + "/report/delete"
 };

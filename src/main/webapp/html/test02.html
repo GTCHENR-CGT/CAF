@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emit事件和On事件</title>
+</head>
+<script src="../js/lib/vue.js"></script>
+<!--<link rel="stylesheet" href="../css/demo.css" rel="external nofollow" />-->
+<body>
+<div id="app">
+    <todo-item v-for="(item,index) in items" v-bind:todo="item" v-on:myclick="addResult"></todo-item>
+</div>
+</body>
+<script>
+    Vue.component('todoItem', {
+        props: ['todo'],
+        template: '<li v-on:click="add">{{todo.text}}</li>', //1.在自定义组件中加入点击事件传给add
+        methods: {
+            add: function () {   //2.这里的add拿到template中的点击事件add，并执行函数
+                this.$parent.$emit("myclick", this.todo.text); //3.暴露给父组件中点击事件名称为my-click
+            },
+        },
+    })
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            items: [
+                {text: 'Runoob'},
+                {text: 'Google'},
+                {text: 'Taobao'}
+            ]
+        },
+        methods: {
+            //5.这里执行父组件传递的点击函数
+            addResult: function (value) {
+                alert(value);
+            },
+        },
+    });
+    vm.$on('myclick', function (value) {
+        console.log(value);
+    })
+</script>
+</html>

@@ -10,11 +10,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a971e580-f6b8-44e4-bfdc-f4a5db4e0296" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/ElementUITest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/com.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/test01.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/test02.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/tableCom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CAF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CAF.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/PageTurnController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/RecommendController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/ReportController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/AdminDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/NormalUserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/RoleDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/AdminDaoImp$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/AdminDaoImp$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/AdminDaoImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/NormalUserDaoImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/RoleDaoImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/interceptor/LoginInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/interceptor/MyInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/interceptor/ReportInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/CommentMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/OperateMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/OperateRecordMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/ReportMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/ReportMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/RoleMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/RoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/TeamMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/TeamMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/comment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/OperateRecord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/Report.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/ReportStatue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/SpecialChromatogram.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/Team.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/use/Operate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/NormalUserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/OperateService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/ReportSearchService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/ReportService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/AdminServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/NormalUserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/OperateServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/ReportSearchServiceImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/ReportServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/ELKUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/ELKUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/MybatisUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/TokenUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldCheck.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldObjects.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/ReportELK.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/SearchMethods.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/QueryVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/ResultVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/springmvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/controller/AdminControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/controller/ReportControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/controller/UserControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/dao/NormalUserDaoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/ReportMapperTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/RoleMapperTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/TeamMapperTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/UserMapperTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/pojo/UserTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/service/NormalUserServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/service/ReportServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ELKUtilTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/LuceneUtilTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ReportELKTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/TokenUtilTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/conf/logging.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/conf/tomcat-users.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/conf/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-04-18" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-04-19" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,13 +204,15 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.ReportControllerTest.publishTest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -394,7 +487,8 @@
       <workItem from="1650328706377" duration="6740000" />
       <workItem from="1650453364064" duration="953000" />
       <workItem from="1650454353512" duration="48000" />
-      <workItem from="1650509496727" duration="2997000" />
+      <workItem from="1650509496727" duration="28864000" />
+      <workItem from="1650592573351" duration="6317000" />
     </task>
     <task id="LOCAL-00001" summary="third push">
       <created>1649220219292</created>
