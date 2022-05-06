@@ -10,34 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a971e580-f6b8-44e4-bfdc-f4a5db4e0296" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/register.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/adminLogin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/model.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/personalHome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/publishReport1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/editDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/addDialog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/reportForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CAF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CAF.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/PageTurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/PageTurnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/mapper/ReportMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/pojo/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/pojo/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/impl/ReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/gtchenr/mapper/ReportMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/gtchenr/mapper/ReportMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springmvc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/html/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/publishReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/publishReport.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/pageTurn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/pageTurn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/pageUrls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/pageUrls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/admin/tableCom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/tableCom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/login/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/login/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/gtchenr/mapper/ReportMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/mapper/ReportMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/admin/editDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/editDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-05-06" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-05-06" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -431,7 +409,7 @@
       <workItem from="1651652457998" duration="16830000" />
       <workItem from="1651742433031" duration="4890000" />
       <workItem from="1651804056526" duration="7879000" />
-      <workItem from="1651815400699" duration="6200000" />
+      <workItem from="1651815400699" duration="8603000" />
     </task>
     <task id="LOCAL-00001" summary="third push">
       <created>1649220219292</created>

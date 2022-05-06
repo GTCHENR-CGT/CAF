@@ -65,7 +65,7 @@
                                @handledelete="handleDelete" @handleedit="handleEdit">
                     </table-com>
                     <template>
-                        <edit-dialog :dialogvisible="dialogVisible" @confirm="handleConfirm" @cancel="handleConfirm"></edit-dialog>
+                        <edit-dialog :dialogvisible="dialogVisible" @confirm="handleConfirm" @cancel="handleConfirm" :report="report1"></edit-dialog>
                     </template>
                     <div style="margin-top: 20px">
                         <el-button @click="handleAdd()">新增</el-button>
@@ -104,6 +104,7 @@
                 admin: {
                     name: "gtchenr",
                 },
+                report1: Object
             }
         },
         methods: {
@@ -146,6 +147,7 @@
                 getReportById(e.rows.reportId)
                 .then((res)=>{
                     console.log(res)
+                    this.report = res.data;
                 })
                 .catch(err=>{
                     console.log(err)
