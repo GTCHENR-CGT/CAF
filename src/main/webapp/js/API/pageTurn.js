@@ -19,3 +19,18 @@ export function navigateToPublishReport() {
 
     return navigateTo(pageUrls.publishReport);
 }
+
+export function navigateToAdmin() {
+
+    return navigateTo(pageUrls.admin);
+}
+
+export function navigateToAdminLogin() {
+
+    return navigateTo(pageUrls.adminLogin);
+}
+
+export function navigateToPersonalHome() {
+
+    return navigateTo(pageUrls.personal);
+}

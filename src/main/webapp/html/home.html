@@ -27,14 +27,23 @@
 </head>
 <body id="body" onload="init()">
 
-<!--用户信息-->
-<div class="user_info flex-row-reverse">
-    <div class="user_item">
-        <label>欢迎校园学术论坛，请先<a>登录</a>或者<a>注册</a></label>
-        <label class="admin"><a>管理员登录</a></label>
-    </div>
-</div>
 <div id="home">
+    <!--用户信息-->
+    <div class="user_info flex-row-reverse" v-if="!isLogin" style="background-color: white">
+        <div class="user_item">
+            <label>欢迎使用校园学术论坛，请先<a>登录</a>或者<a>注册</a></label>
+            <label class="admin click" @click="navigateToAdminLogin1()">管理员登录</label>
+        </div>
+    </div>
+    <div class="user_info flex-row-reverse" style="background-color: white" v-if="isLogin">
+        <div class="user_item">
+            <!--            <label>欢迎校园学术论坛</label>-->
+            <label>你好，{{borderSelected}}!</label>
+            <label class="click" style="color: blue" @click="navigateToPersonal1()">我的首页</label>
+            <label class="click" style="color: blue">消息</label>
+            <label class="admin click" style="color: blue" @click="navigateToAdminLogin1()"><a>管理员登录</a></label>
+        </div>
+    </div>
     <!--论坛版块选择-->
     <div class="title flex-row letallCenter" id="border">
         <div class="title_item letallCenter">学术论坛</div>
@@ -88,7 +97,7 @@
 
 <script type="module">
     import {getReportUrlByNewest, getReports} from "../js/service/home/service.js";
-    import {navigateToReport, navigateToPublishReport} from "../js/API/pageTurn.js";
+    import {navigateToReport, navigateToPublishReport,navigateToAdminLogin,navigateToPersonalHome} from "../js/API/pageTurn.js";
 
     let reportItem = {
         props: {
@@ -122,18 +131,19 @@
         data: function () {
             return {
                 reportList: Array,
-                borders: [{name: "论坛首页", select: ""},
+                borders: [{name: "论坛首页", select: "title_item_select"},
                     {name: "热度推荐", select: ""},
                     {name: "最新发布", select: ""},
                     {name: "最新回复", select: ""},
                     {name: "计算机", select: ""},
-                    {name: "数学", select: "title_item_select"}],
-                borderSelected: "数学",
+                    {name: "数学", select: ""}],
+                borderSelected: "论坛首页",
                 themes: [{name: '主题', select: "search-theme-select"},
                     {name: '关键字', select: ""},
                     {name: '全名', select: ""},
                     {name: '汇报人', select: ""}],
-                themeSelected: '主题'
+                themeSelected: '主题',
+                isLogin:true
             }
         },
         methods: {
@@ -163,6 +173,13 @@
 
             publish: function () {
                 navigateToPublishReport()
+            },
+            navigateToAdminLogin1(){
+                console.log("navigateToAdminLogin1");
+                navigateToAdminLogin();
+            },
+            navigateToPersonal1(){
+                navigateToPersonalHome()
             }
         },
         mounted() {

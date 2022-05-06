@@ -9,4 +9,6 @@ export function authorization() {
     return httpInstance.post(apiUrls.authorizationUrl);
 }
 
-
+export function adminLogin(data){
+    return httpInstance.post(apiUrls.adminLogin, data);
+}

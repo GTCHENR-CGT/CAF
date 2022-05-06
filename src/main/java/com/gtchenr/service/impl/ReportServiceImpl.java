@@ -36,4 +36,21 @@ public class ReportServiceImpl implements ReportService {
         }
         return false;
     }
+
+    @Override
+    public List<Report> reports() {
+        return reportMapper.queryReports();
+    }
+
+    @Override
+    public Integer delete(Integer id) {
+        return reportMapper.delete(id);
+    }
+
+    @Override
+    public Integer update(Report report) {
+        return reportMapper.update(report);
+    }
+
+
 }

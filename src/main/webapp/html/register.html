@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <style lang="css">
+        @import "../css/home.css";
+        @import "../css/lib/total.css";
+    </style>
+</head>
+<body>
+<div id="app">
+    <el-container>
+        <el-header height="200">
+            <h1 class="letallCenter">用户注册</h1>
+        </el-header>
+        <el-main>
+            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+                     class="demo-ruleForm">
+                <el-form-item label="登录名" prop="loginName">
+                    <el-input v-model="ruleForm.loginName"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="pass">
+                    <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码" prop="checkPass">
+                    <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="昵称" prop="name">
+                    <el-input v-model="ruleForm.name"></el-input>
+                </el-form-item>
+                <el-form-item label="性别">
+                    <el-radio-group v-model="ruleForm.sex">
+                        <el-radio label="男"></el-radio>
+                        <el-radio label="女"></el-radio>
+                        <el-radio label="保密~"></el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="电话" prop="phone">
+                    <el-input v-model="ruleForm.phone"></el-input>
+                </el-form-item>
+                <el-form-item label="邮箱" prop="email">
+                    <el-input v-model="ruleForm.email"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
+            </el-form>
+        </el-main>
+    </el-container>
+</div>
+<!-- 先引入 Vue -->
+<script type="text/javascript" src="../js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="module">
+    new Vue({
+        el: '#app',
+        data: function () {
+            var checkInput = (rule, value, callback) => {
+                switch (rule.field) {
+                    case 'loginName':
+                        if (!value) {
+                            return callback(new Error('用户名不能为空'));
+                        }
+                        break;
+                    case 'name':
+                        if (!value) {
+                            return callback(new Error('昵称不能为空'));
+                        }
+                        break;
+                    case 'sex':
+                        if (!value) {
+                            return callback(new Error('未选择性别'));
+                        }
+                        break;
+                }
+                // setTimeout(() => {
+                //     if (!Number.isInteger(value)) {
+                //         callback(new Error('请输入数字值'));
+                //     }
+                // }, 1000);
+            };
+            var validatePass = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请输入密码'));
+                } else {
+                    if (this.ruleForm.checkPass !== '') {
+                        this.$refs.ruleForm.validateField('checkPass');
+                    }
+                    callback();
+                }
+            };
+            var validatePass2 = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请再次输入密码'));
+                } else if (value !== this.ruleForm.pass) {
+                    callback(new Error('两次输入密码不一致!'));
+                } else {
+                    callback();
+                }
+            };
+            return {
+                ruleForm: {
+                    loginName: '',
+                    name: '',
+                    pass: '',
+                    checkPass: '',
+                    sex: Number,
+                    phone: '',
+                    email: '',
+                    password:'',
+
+                },
+                rules: {
+                    pass: [
+                        {validator: validatePass, trigger: 'blur'}
+                    ],
+                    checkPass: [
+                        {validator: validatePass2, trigger: 'blur'}
+                    ],
+                    loginName: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    name: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    sex: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    email:[
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    phone:[
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                }
+            };
+        },
+        methods: {
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    console.log(this.ruleForm);
+                    if (valid) {
+                        console.log("success submit")
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                console.log(formName)
+                this.$refs[formName].resetFields();
+            },
+
+            register1(){
+
+            }
+        }
+
+
+    })
+</script>
+<style>
+    .el-header, .el-footer {
+        /*background-color: #B3C0D1;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+
+    .el-main {
+        /*background-color: #E9EEF3;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+    body > .el-container {
+        margin-bottom: 40px;
+    }
+
+    .el-container:nth-child(7) .el-aside {
+        line-height: 320px;
+    }
+
+    .el-header h1 {
+        font-size: 30px;
+    }
+</style>
+</body>
+</html>

@@ -34,4 +34,9 @@ export function deleteReportByReportId(reportId){
     return httpInstance.delete(apiUrls.deleteReport+"/"+reportId);
 }
 
+export function reports(){
+
+    return httpInstance.get(apiUrls.adminReports);
+}
+
 

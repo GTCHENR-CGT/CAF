@@ -10,5 +10,7 @@ export default {
     getReportById: report + "/",
     publishReport: report + "/publish",
     publishReport1: report+ "/publish1",
-    deleteReport: admin + "/report/delete"
+    deleteReport: admin + "/report/delete",
+    adminLogin: admin+"/login",
+    adminReports:admin+"/reports",
 };

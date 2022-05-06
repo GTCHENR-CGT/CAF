@@ -44,9 +44,23 @@ public class ReportMapperTest {
     @Test
     public void addTest() {
         Report report = new Report();
-        report.setReportId(10);
         report.setUserId(1);
         Integer add = reportMapper.add(report);
         System.out.println(add);
+    }
+
+    @Test
+    public void deleteTest(){
+        System.out.println(reportMapper.delete(67));;
+    }
+
+    @Test
+    public void updateTest(){
+
+        Report report = new Report();
+        report.setReportId(68);
+        report.setUserId(1);
+        report.setReportTitle("aa");
+        System.out.println(reportMapper.update(report));
     }
 }

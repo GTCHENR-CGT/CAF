@@ -22,7 +22,6 @@ public class Role {
 
     public Role() {
     }
-
     public Role(String roleName, Integer statue) {
         this.roleName = roleName;
         this.statue = statue;

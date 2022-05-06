@@ -15,4 +15,9 @@ public interface ReportService {
 
     boolean add(Report report);
 
+    List<Report> reports();
+
+    Integer delete(Integer id);
+
+    Integer update(Report report);
 }

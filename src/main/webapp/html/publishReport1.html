@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布报告</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <style lang="css">
+        @import "../css/home.css";
+        @import "../css/lib/total.css";
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div class="user_info flex-row-reverse" v-if="!isLogin">
+        <div class="user_item">
+            <label>欢迎使用校园学术论坛，请先<a>登录</a>或者<a>注册</a></label>
+            <label class="admin"><a>管理员登录</a></label>
+        </div>
+    </div>
+    <div class="user_info flex-row-reverse" v-if="isLogin">
+        <div class="user_item">
+<!--            <label>欢迎校园学术论坛</label>-->
+            <label>你好，{{}}!</label>
+            <label class="click" style="color: blue">我的首页</label>
+            <label class="click" style="color: blue">消息</label>
+            <label class="admin click" style="color: blue"><a>管理员登录</a></label>
+        </div>
+    </div>
+    <el-container>
+        <el-header height="200">
+            <h1 class="letallCenter">发布报告</h1>
+        </el-header>
+        <el-main width="800">
+            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+                     class="demo-ruleForm">
+                <el-form-item label="报告题目" prop="reportTitle">
+                    <el-input v-model="ruleForm.reportTitle"></el-input>
+                </el-form-item>
+                <el-form-item label="报告人" prop="reportPeople">
+                    <el-input v-model="ruleForm.reportPeople"></el-input>
+                </el-form-item>
+                <el-form-item label="组织者" prop="reportOrganizer">
+                    <el-input v-model="ruleForm.reportOrganizer"></el-input>
+                </el-form-item>
+                <el-form-item label="地点" prop="reportLocation">
+                    <el-input v-model="ruleForm.reportLocation"></el-input>
+                </el-form-item>
+                <el-form-item label="开始时间">
+                    <el-col :span="11">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.beginDate" style="width: 100%;"></el-date-picker>
+                    </el-col>
+                    <el-col class="line" :span="2">-</el-col>
+                    <el-col :span="11">
+                        <el-time-picker placeholder="选择时间" v-model="ruleForm.beginTime" style="width: 100%;"></el-time-picker>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="结束时间">
+                    <el-col :span="11">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.endDate" style="width: 100%; "></el-date-picker>
+                    </el-col>
+                    <el-col class="line" :span="2">-</el-col>
+                    <el-col :span="11">
+                        <el-time-picker placeholder="选择时间" v-model="ruleForm.endTime" style="width: 100%"></el-time-picker>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="报告摘要">
+                    <el-input type="textarea" v-model="ruleForm.reportDetails" rows="4"></el-input>
+                </el-form-item>
+                <el-form-item label="报告人简介">
+                    <el-input type="textarea" v-model="ruleForm.reportPeopleInfo" rows="4"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
+            </el-form>
+        </el-main>
+    </el-container>
+</div>
+<!-- 先引入 Vue -->
+<script type="text/javascript" src="../js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="module">
+    import {publish,publish1} from "../js/service/publish/service.js"
+    import {navigateToHome} from "../js/API/pageTurn.js";
+    new Vue({
+        el: '#app',
+        data: function () {
+            var checkInput = (rule, value, callback) => {
+                switch (rule.field) {
+                    case 'reportTitle':
+                        if (!value) {
+                            return callback(new Error('报告题目不能为空'));
+                        }
+                        break;
+                    case 'reportPeople':
+                        if (!value) {
+                            return callback(new Error('报告人不能为空'));
+                        }
+                        break;
+                    case 'reportOrganizer':
+                        if (!value) {
+                            return callback(new Error('组织者不能为空'));
+                        }
+                        break;
+                    case 'reportLocation':
+                        if (!value) {
+                            return callback(new Error('地点不能为空'));
+                        }
+                        break;
+                    case 'reportDetails':
+                        if (!value) {
+                            return callback(new Error('报告摘要不能为空'));
+                        }
+                        break;
+                    case 'reportPeopleInfo':
+                        if (!value) {
+                            return callback(new Error('报告人简介不能为空'));
+                        }
+                        break;
+                }
+                // setTimeout(() => {
+                //     if (!Number.isInteger(value)) {
+                //         callback(new Error('请输入数字值'));
+                //     }
+                // }, 1000);
+            };
+            return {
+                isLogin:true,
+                ruleForm: {
+                    reportTitle:'',
+                    reportPeople: '',
+                    reportOrganizer: '',
+                    reportLocation: '',
+                    beginDate:'',
+                    endDate:'',
+                    endTime:'',
+                    beginTime:'',
+                    reportDetails:'',
+                    reportPeopleInfo:''
+
+                },
+                rules: {
+                    reportTitle: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportPeople: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportOrganizer: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    beginDate: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    endDate:[
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    endTime: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    beginTime: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportLocation: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportDetails: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportPeopleInfo: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                }
+            };
+        },
+        methods: {
+            submitForm(formName) {
+                console.log(this.ruleForm);
+                this.$refs[formName].validate((valid) => {
+                    console.log(this.ruleForm);
+                    if (valid) {
+                        console.log("success submit")
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                console.log(formName)
+                this.$refs[formName].resetFields();
+            },
+
+            publishReport: function () {
+                let data = $('#report').serialize();
+                console.log(data);
+                publish(data)
+                    .then((res) => {
+                        console.log(res);
+                        if(res.statusCode === 201){
+                            alert("发布成功，跳转返回主页！")
+                            navigateToHome();
+                        }else if(res.statusCode === 202){
+                            alert("发布失败，请检测输入！或者是否处于登录状态！");
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            }
+        }
+
+
+    })
+</script>
+<style>
+    .el-header, .el-footer {
+        /*background-color: #B3C0D1;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+
+    .el-main {
+        /*background-color: #E9EEF3;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+    body > .el-container {
+        margin-bottom: 40px;
+    }
+
+    .el-container:nth-child(7) .el-aside {
+        line-height: 320px;
+    }
+
+    .el-header h1 {
+        font-size: 30px;
+    }
+    .admin {
+        position: absolute;
+        margin-left: 20px;
+        left: 0;
+    }
+    .user_info {
+        height: 25px;
+        font-size: 12px;
+        background-color: white;
+        border-bottom: silver solid 1px;
+    }
+
+    .user_item {
+        height: 30px;
+    }
+
+    /*.user_item label:not(:last-child){*/
+    /*    border-right: silver solid 1px;*/
+    /*}*/
+</style>
+</body>
+</html>

@@ -10,102 +10,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a971e580-f6b8-44e4-bfdc-f4a5db4e0296" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/com.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/test01.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/test02.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/tableCom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/adminLogin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/model.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/personalHome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/publishReport1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/html/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/editDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CAF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CAF.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/PageTurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/controller/PageTurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/mapper/ReportMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/pojo/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/pojo/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gtchenr/service/impl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/gtchenr/mapper/ReportMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/gtchenr/mapper/ReportMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springmvc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/html/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/publishReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/publishReport.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/apiUrls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/AdminController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/PageTurnController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/RecommendController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/ReportController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/AdminDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/NormalUserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/RoleDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/AdminDaoImp$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/AdminDaoImp$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/AdminDaoImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/NormalUserDaoImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/dao/imp/RoleDaoImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/interceptor/LoginInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/interceptor/MyInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/interceptor/ReportInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/CommentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/OperateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/OperateRecordMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/ReportMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/ReportMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/RoleMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/RoleMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/TeamMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/TeamMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/UserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/mapper/comment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/OperateRecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/Report.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/ReportStatue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/SpecialChromatogram.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/Team.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/pojo/use/Operate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/AdminService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/NormalUserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/OperateService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/ReportSearchService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/ReportService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/AdminServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/NormalUserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/OperateServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/ReportSearchServiceImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/service/impl/ReportServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/ELKUtil$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/ELKUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/MybatisUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/TokenUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldCheck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/FieldObjects.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/ReportELK.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/utils/use/SearchMethods.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/QueryVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gtchenr/vo/ResultVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springmvc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/controller/AdminControllerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/controller/ReportControllerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/controller/UserControllerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/dao/NormalUserDaoTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/ReportMapperTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/RoleMapperTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/TeamMapperTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/mapper/UserMapperTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/pojo/UserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/service/NormalUserServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/service/ReportServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ELKUtilTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/LuceneUtilTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/ReportELKTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/gtchenr/utils/TokenUtilTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tomcat/conf/logging.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tomcat/conf/tomcat-users.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tomcat/conf/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-04-18" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-04-19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/pageTurn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/pageTurn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/API/pageUrls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/API/pageUrls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/admin/tableCom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/admin/tableCom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/login/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/login/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/service/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/service/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/gtchenr/mapper/ReportMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/gtchenr/mapper/ReportMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,12 +50,12 @@
         <option value="spring-beans.schema" />
         <option value="Jsp File" />
         <option value="Tag Library Descriptor" />
-        <option value="JavaScript File" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -203,40 +135,14 @@
       <recent name="com.gtchenr.pojo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportControllerTest.publishTest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ReportMapperTest.updateTest">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in CAF" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CAF" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportControllerTest.publishTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CAF" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gtchenr.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gtchenr.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.controller.ReportControllerTest" />
-      <option name="METHOD_NAME" value="publishTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -257,33 +163,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceTest.addTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportMapperTest.deleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAF" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gtchenr.service.*" />
+          <option name="PATTERN" value="com.gtchenr.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gtchenr.service" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.service.ReportServiceTest" />
-      <option name="METHOD_NAME" value="addTest" />
+      <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.ReportMapperTest" />
+      <option name="METHOD_NAME" value="deleteTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceTest.addTest02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportMapperTest.queryAllTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAF" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gtchenr.service.*" />
+          <option name="PATTERN" value="com.gtchenr.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.gtchenr.service" />
-      <option name="MAIN_CLASS_NAME" value="com.gtchenr.service.ReportServiceTest" />
-      <option name="METHOD_NAME" value="addTest02" />
+      <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.ReportMapperTest" />
+      <option name="METHOD_NAME" value="queryAllTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReportMapperTest.queryReportByIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CAF" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gtchenr.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.ReportMapperTest" />
+      <option name="METHOD_NAME" value="queryReportByIdTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReportMapperTest.updateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CAF" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gtchenr.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gtchenr.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.gtchenr.mapper.ReportMapperTest" />
+      <option name="METHOD_NAME" value="updateTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -378,20 +316,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.ReportMapperTest.queryAllTest" />
+      <item itemvalue="JUnit.ReportMapperTest.queryReportByIdTest" />
+      <item itemvalue="JUnit.ReportMapperTest.deleteTest" />
       <item itemvalue="JUnit.ReportMapperTest.addTest" />
-      <item itemvalue="JUnit.ReportServiceTest.addTest" />
-      <item itemvalue="JUnit.ReportServiceTest.addTest02" />
-      <item itemvalue="JUnit.All in CAF" />
-      <item itemvalue="JUnit.ReportControllerTest.publishTest" />
+      <item itemvalue="JUnit.ReportMapperTest.updateTest" />
       <item itemvalue="Tomcat Server.Tomcat 10.0.18" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReportControllerTest.publishTest" />
-        <item itemvalue="JUnit.ReportServiceTest.addTest02" />
-        <item itemvalue="JUnit.ReportServiceTest.addTest" />
-        <item itemvalue="JUnit.All in CAF" />
+        <item itemvalue="JUnit.ReportMapperTest.updateTest" />
         <item itemvalue="JUnit.ReportMapperTest.addTest" />
+        <item itemvalue="JUnit.ReportMapperTest.deleteTest" />
+        <item itemvalue="JUnit.ReportMapperTest.queryReportByIdTest" />
+        <item itemvalue="JUnit.ReportMapperTest.queryAllTest" />
       </list>
     </recent_temporary>
   </component>
@@ -488,7 +426,12 @@
       <workItem from="1650453364064" duration="953000" />
       <workItem from="1650454353512" duration="48000" />
       <workItem from="1650509496727" duration="28864000" />
-      <workItem from="1650592573351" duration="6317000" />
+      <workItem from="1650592573351" duration="22241000" />
+      <workItem from="1651567812484" duration="4000" />
+      <workItem from="1651652457998" duration="16830000" />
+      <workItem from="1651742433031" duration="4890000" />
+      <workItem from="1651804056526" duration="7879000" />
+      <workItem from="1651815400699" duration="6200000" />
     </task>
     <task id="LOCAL-00001" summary="third push">
       <created>1649220219292</created>

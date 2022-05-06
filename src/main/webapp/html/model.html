@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div id="app">
+
+</div>
+<!-- 先引入 Vue -->
+<script type="text/javascript" src="../js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        form: {
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+        }
+      }
+    },
+
+  })
+</script>
+</body>
+</html>

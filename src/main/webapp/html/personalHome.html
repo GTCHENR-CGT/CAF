@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的主页</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <style lang="css">
+        @import "../css/home.css";
+        @import "../css/lib/total.css";
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="user_info flex-row-reverse" v-if="!isLogin" style="background-color: rgb(246,246,246)">
+        <div class="user_item">
+            <label>欢迎使用校园学术论坛，请先<a>登录</a>或者<a>注册</a></label>
+            <label class="admin click" @click="navigateToAdminLogin1()">管理员登录</label>
+        </div>
+    </div>
+    <div class="user_info flex-row-reverse" style="background-color: rgb(246,246,246)" v-if="isLogin">
+        <div class="user_item">
+            <!--            <label>欢迎校园学术论坛</label>-->
+            <label>你好，{{borderSelected}}!</label>
+            <label class="click" style="color: blue">我的首页</label>
+            <label class="click" style="color: blue">消息</label>
+            <label class="admin click" style="color: blue" @click="navigateToAdminLogin1()"><a>管理员登录</a></label>
+        </div>
+    </div>
+    <div class="title flex-row letallCenter" id="border">
+        <div class="title_item letallCenter">学术论坛</div>
+
+        <border-item v-for="border in borders" :name="border.name" :select="border.select"
+                     @click.native="borderClick(border)"></border-item>
+    </div>
+    <el-container>
+        <el-header height="250px" class="letallCenter">
+            <div class="flex-row" style="width: 1250px; background-color: white;padding: 30px">
+                <div>
+                    <img src="../images/head1.png">
+                </div>
+                <div class="">
+                    <div style="font-weight: bold;font-size: 18px;">gtchenr</div>
+                    <div class="flex-row"><div style="margin-right: 15px;border-radius: 15%;margin-left: 20px; "><label style="font-weight: bold">称号：</label>初入江湖</div><div style="border-radius: 15%;"><label style="font-weight: bold">加入论坛</label>15<label style="font-weight: bold">天</label></div></div>
+                </div>
+                <div style="position: relative;bottom: -100px;right: -650px;">
+                    <el-button plain>编辑资料</el-button>
+                    <el-button plain>退出登录</el-button>
+                </div>
+            </div>
+
+        </el-header>
+
+        <el-main class="letRowCenter">
+            <div  style="width: 1250px; background-color: white;padding: 30px">
+                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                    <el-menu-item index="1">发帖</el-menu-item>
+                    <el-menu-item index="2">回复</el-menu-item>
+                    <el-menu-item index="3">点赞</el-menu-item>
+                    <el-menu-item index="4">消息</el-menu-item>
+                </el-menu>
+                <div v-if="activeIndex == 1" v-for="index in 20" >
+                    <report-item ></report-item>
+                </div>
+                <div  v-if="activeIndex == 2" v-for="index in 20">
+                    <comment-item></comment-item>
+                </div>
+                <div  v-if="activeIndex == 3" v-for="index in 20">
+                    <report-item ></report-item>
+                </div>
+                <div  v-if="activeIndex == 4" v-for="index in 20">
+                    <comment-item></comment-item>
+                </div>
+            </div>
+        </el-main>
+    </el-container>
+</div>
+<!-- 先引入 Vue -->
+<script type="text/javascript" src="../js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="module">
+    import {navigateToHome,navigateToAdminLogin} from "../js/API/pageTurn.js"
+
+    let borderItem = {
+        props: {
+            name: String,
+            select: String
+        },
+        template: '<div class="letallCenter click title_item" :class="select">{{name}}</div>'
+    }
+
+    let reportItem = {
+
+        template: '                    <div class="flex-row tiezi" style="justify-content: space-between;font-size: 13px;line-height: 30px;">\n' +
+            '                        <div>\n' +
+            '                            <label style="margin-right: 15px" class="click">Segmenting time series via self-normalization</label>\n' +
+            '                            <label style="color: silver" class="click">15点赞23回复</label>\n' +
+            '                        </div>\n' +
+            '                        <div style="color: silver">\n' +
+            '                            <label class="click">数学</label>\n' +
+            '                            <label class="click">2022-2-12</label>\n' +
+            '                        </div>\n' +
+            '                    </div>'
+    }
+
+    let commentItem = {
+        components: {
+            'report-item': reportItem,
+        },
+        template:'                <div style="line-height: 20px;border-bottom: rgb(250,250,250); solid 1px ">\n' +
+            '                    <div class="flex-row" style="line-height: 20px;margin-top: 5px;font-size: 13px">你好</div>\n' +
+            '                    <report-item style="color:silver;font-size: 10px;.tiezi:hover{background-color: white;}"></report-item>\n' +
+            '                </div>'
+    }
+    new Vue({
+        el: '#app',
+        components: {
+            'border-item': borderItem,
+            'report-item': reportItem,
+            'comment-item': commentItem
+        },
+        data: function () {
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                isLogin:true,
+                borders: [{name: "论坛首页", select: ""},
+                    {name: "热度推荐", select: ""},
+                    {name: "最新发布", select: ""},
+                    {name: "最新回复", select: ""},
+                    {name: "计算机", select: ""},
+                    {name: "数学", select: "title_item_select"}],
+                borderSelected: "数学",
+                activeIndex: '2',
+            }
+        },
+        methods:{
+            borderClick: function (border) {
+                this.borderSelected = border.name;
+                for (let i = 0; i < this.borders.length; i++) {
+                    if (border.name === this.borders[i].name) {
+                        this.borders[i].select = "title_item_select";
+                    } else {
+                        this.borders[i].select = "";
+                    }
+                }
+                navigateToHome();
+            },
+            handleSelect(key, keyPath) {
+                console.log(key);
+                this.activeIndex = key;
+
+            },
+            navigateToAdminLogin1(){
+                console.log("navigateToAdminLogin1");
+                navigateToAdminLogin();
+            },
+        }
+    })
+</script>
+<style>
+
+    body{
+        background-color: rgb(246,246,246);
+    }
+    .el-header, .el-footer {
+        /*background-color: #B3C0D1;*/
+        /*color: #333;*/
+
+        text-align: center;
+        line-height: 60px;
+    }
+
+
+    .el-main {
+        /*background-color: #E9EEF3;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+    body > .el-container {
+        margin-bottom: 40px;
+    }
+
+    .el-container:nth-child(7) .el-aside {
+        line-height: 320px;
+    }
+
+    .el-header img{
+        border-radius: 50%;
+        border:silver solid 1px;
+        height: 100px;
+        width: 100px;
+    }
+    .tiezi:hover{
+        background-color: rgb(240,240,240);
+    }
+</style>
+</body>
+</html>

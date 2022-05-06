@@ -24,4 +24,22 @@ public class PageTurnController {
         System.out.println("navigateToPublishReport-------------");
         return new ModelAndView("publishReport");
     }
+
+    @RequestMapping("admin")
+    public ModelAndView navigateToAdmin(){
+        System.out.println("navigateToAdmin");
+        return new ModelAndView("admin");
+    }
+
+    @RequestMapping("adminLogin")
+    public ModelAndView navigateToAdminLogin(){
+        System.out.println("navigateToAdminLogin");
+        return new ModelAndView("adminLogin");
+    }
+
+    @RequestMapping("personal")
+    public ModelAndView navigateToPersonal(){
+        System.out.println("navigateToAdminLogin");
+        return new ModelAndView("personalHome");
+    }
 }

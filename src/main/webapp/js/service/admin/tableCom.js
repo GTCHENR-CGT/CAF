@@ -120,8 +120,9 @@ const tableCom = {
             console.log(row);
 
         },
-        handleEdit(){
+        handleEdit(index, rows){
             console.log('handleEdit')
+            this.$emit("handleedit",{index:index,rows:rows});
         },
         handleDelete:function (index, rows) {
 
@@ -138,7 +139,7 @@ const tableCom = {
         '                        <el-table-column fixed="right" label="操作" width="100">\n' +
         '                            <template  slot-scope="scope">\n' +
         '                                <el-button v-if="operate === operateSelect[0]" @click="handleClick(scope.row)" type="text" size="small">查看</el-button>\n' +
-        '                                <el-button v-if="operate === operateSelect[0]" type="text" size="small" @click="handleEdit">编辑</el-button>\n' +
+        '                                <el-button v-if="operate === operateSelect[0]" type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>\n' +
         '                                <el-button v-if="operate === operateSelect[1]" size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>\n' +
         '                            </template>\n' +
         '                        </el-table-column>\n' +
