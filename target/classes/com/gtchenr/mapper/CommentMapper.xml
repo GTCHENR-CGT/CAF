@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gtchenr.mapper.CommentMapper">
+    <select id="comments" resultMap="baseMap">
+        select * from comment;
+    </select>
+    <select id="queryCommentByReportId" resultMap="baseMap">
+        select * from comment where report_id = #{arg0};
+    </select>
+    <select id="queryCommentByUserId" resultMap="baseMap">
+        select * from comment where user_id = #{arg0};
+    </select>
+    <insert id="add" parameterType="Comment">
+        insert into comment(user_id, report_id, comment_id, comment_details,comment_credit, publish_time)
+            value (#{userId},#{reportId},#{commentId},#{commentDetails},#{commentCredit},#{publishTime})
+    </insert>
+<!--    <update id="update" parameterType="Comment">
+        insert into comment(user_id, report_id, comment_id, comment_details,comment_credit, publish_time)
+            value (#{userId},#{reportId},#{commentId},#{commentDetail},#{commentCredit},#{publishTime})
+    </update>-->
+    <resultMap id="baseMap" type="Comment">
+        <result column="report_id" property="reportId"/>
+        <result column="user_id" property="userId"/>
+        <result column="comment_id" property="commentId"/>
+        <result column="comment_details" property="commentDetails"/>
+        <result column="comment_credit" property="commentCredit"/>
+        <result column="publish_time" property="publishTime"/>
+    </resultMap>
+</mapper>

@@ -4,6 +4,7 @@ import com.gtchenr.pojo.Report;
 import com.gtchenr.utils.MybatisUtil;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ReportMapperTest {
@@ -62,5 +63,14 @@ public class ReportMapperTest {
         report.setUserId(1);
         report.setReportTitle("aa");
         System.out.println(reportMapper.update(report));
+    }
+
+    @Test
+    public void queryReportByIdTest1() {
+        Report report = reportMapper.queryReportById(1);
+//        String STANDARD_DATE_FORMAT_UTC = "yyyy-MM-dd HH:mm:ss.SSS ";
+//        SimpleDateFormat dateFormat = new SimpleDateFormat(STANDARD_DATE_FORMAT_UTC);
+//        String format = dateFormat.format(report.getPublishTime());
+        System.out.println(report.getPublishTime());
     }
 }

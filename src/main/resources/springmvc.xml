@@ -29,7 +29,8 @@
             <mvc:mapping path="/normalUser/login"/>
             <bean class="com.gtchenr.interceptor.LoginInterceptor"></bean>
         </mvc:interceptor>
-    </mvc:interceptors>对控制器层controller的配置,即对Servlet的配置
+    </mvc:interceptors>
+<!--    对控制器层controller的配置,即对Servlet的配置-->
 
 
 </beans>

@@ -19,23 +19,30 @@
         where report_id = #{arg0}
     </select>
     <select id="queryReportsInfo" resultMap="baseMap">
-        select report_id, report_title, report_people
+        select report_id, report_title, report_people,publish_time
         from report
     </select>
     <insert id="add" parameterType="Report">
         insert into report(user_id,board_id, report_title, report_organizer, report_introduction, report_details, report_people,
                            report_begin_time, report_end_time, report_location, report_people_info)
         values (#{userId},#{boardId}, #{reportTitle}, #{reportOrganizer}, #{reportIntroduction}, #{reportDetails},
-                #{reportPeople}, #{reportBeginTime}, #{reportEndTime}, #{reportLocation}, #{reportPeopleInfo})
+                #{reportPeople}, #{reportBeginTime}, #{reportEndTime}, #{reportLocation}, #{reportPeopleInfo},#{publishTime})
     </insert>
     <delete id="delete" parameterType="java.lang.Integer">
         delete from report where report_id = #{arg0}
     </delete>
     <update id="update" parameterType="Report">
         update report set user_id=#{userId},board_id=#{boardId},report_title=#{reportTitle},report_organizer=#{reportOrganizer},report_introduction=#{reportIntroduction}
-                ,report_details=#{reportDetails},report_people=#{reportPeople},report_begin_time=#{reportBeginTime},report_end_time=#{reportEndTime},report_location=#{reportLocation},report_people_info=#{reportPeopleInfo}
+                ,report_details=#{reportDetails},report_people=#{reportPeople},report_begin_time=#{reportBeginTime},report_end_time=#{reportEndTime},report_location=#{reportLocation},report_people_info=#{reportPeopleInfo},
+                publish_time=#{publishTime}
         where report_id= #{reportId}
     </update>
+    <select id="queryReportByUserId" parameterType="java.lang.Integer" resultMap="baseMap">
+        select *
+        from report
+        where user_id = #{arg0};
+    </select>
+
     <resultMap id="baseMap" type="Report">
         <result column="user_id" property="userId"/>
         <result column="report_id" property="reportId"/>
@@ -49,5 +56,6 @@
         <result column="report_end_time" property="reportEndTime"/>
         <result column="report_location" property="reportLocation"/>
         <result column="report_people_info" property="reportPeopleInfo"/>
+        <result column="publish_time" property="publishTime"/>
     </resultMap>
 </mapper>

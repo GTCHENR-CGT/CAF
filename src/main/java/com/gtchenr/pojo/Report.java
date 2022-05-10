@@ -1,5 +1,7 @@
 package com.gtchenr.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Report {
@@ -10,11 +12,23 @@ public class Report {
     private String reportIntroduction;
     private String reportDetails;
     private String reportPeople;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date reportBeginTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date reportEndTime;
     private String reportLocation;
     private String reportPeopleInfo;
     private String reportTitle;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date publishTime;
+
+    public Date getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
+    }
 
     public String getReportTitle() {
         return reportTitle;

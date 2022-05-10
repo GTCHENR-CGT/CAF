@@ -19,4 +19,6 @@ public interface ReportMapper {
     Integer delete(Integer id);
 
     Integer update(Report report);
+
+    List<Report> queryReportByUserId(Integer userId);
 }

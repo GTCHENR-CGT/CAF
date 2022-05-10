@@ -1,6 +1,10 @@
 package com.gtchenr.utils;
 
 import com.alibaba.fastjson.JSON;
+import com.gtchenr.mapper.ReportMapper;
+import com.gtchenr.pojo.Report;
+import com.gtchenr.service.ReportService;
+import com.gtchenr.service.impl.ReportServiceImpl;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -21,7 +25,7 @@ public class ELKUtilTest {
     private static String HOSTNAME = "localhost";
     private static Integer PORT = 9200;
     private static RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost(HOSTNAME, PORT, "http")));
-
+    ReportMapper reportMapper = MybatisUtil.getSqlSession1().getMapper(ReportMapper.class);
     @Test
     public void getTest1() throws IOException {
         Book book = new Book("dd", 12, "hhhh");
@@ -96,7 +100,7 @@ public class ELKUtilTest {
     @Test
     public void queryByMatchTest() {
 
-        List<String> list = ELKUtil.queryByMulti("report", 1, 10, "program director", "reportPeople", "reportPeopleInfo");
+        List<String> list = ELKUtil.queryByMulti("report", 1, 10, "program director", "reportPeople", "reportPeopleInfo","reportOrganizer");
         print(list);
     }
 
@@ -112,5 +116,21 @@ public class ELKUtilTest {
         for (String s : list) {
             System.out.println(s);
         }
+    }
+
+    @Test
+    public void addTest(){
+        List<Report> reports = reportMapper.queryReports();
+        for (Report report:reports) {
+            System.out.println(report);
+            ELKUtil.add("report",report);
+        }
+
+    }
+
+    @Test
+    public void test03(){
+        List<String> list = ELKUtil.queryByMulti("report", 1, 10, "常晋源教授", "reportTitle","reportPeople","reportDetails","reportPeopleInfo","reportOrganizer");
+        print(list);
     }
 }

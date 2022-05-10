@@ -65,7 +65,7 @@
                                @handledelete="handleDelete" @handleedit="handleEdit">
                     </table-com>
                     <template>
-                        <edit-dialog :dialogvisible="dialogVisible" @confirm="handleConfirm" @cancel="handleConfirm" :report="report1"></edit-dialog>
+                        <edit-dialog :dialogvisible="dialogVisible" @confirm="handleConfirm" @cancel="handleConfirm" :report1="report"></edit-dialog>
                     </template>
                     <div style="margin-top: 20px">
                         <el-button @click="handleAdd()">新增</el-button>
@@ -104,12 +104,11 @@
                 admin: {
                     name: "gtchenr",
                 },
-                report1: Object
+                report: {}
             }
         },
         methods: {
             toggleSelection(rows) {
-                console.log("-----------")
                 if (rows) {
                     rows.forEach(row => {
                         // this.$refs.multipleTable.toggleRowSelection(row);
@@ -123,41 +122,37 @@
             handleOperate(operate) {
                 switch (operate) {
                     case 'view':
-                        console.log('operate-view')
                         this.operate = 'view';
                         break;
                     case 'add':
-                        console.log('operate-add')
                         break;
                     case 'delete':
                         this.operate = 'delete';
                         break;
                     case 'edit':
                         this.operate = 'view';
-                        console.log('operate-edit')
                         break;
                 }
             },
-            handleEdit(e) {
+            async handleEdit(e) {
+                await getReportById(e.rows.reportId)
+                .then((res)=>{
+                    this.report = res.data;
+                    // console.log(this.report)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
                 if(this.dialogVisible){
                     this.dialogVisible = false;
                 }else {
                     this.dialogVisible = true;
                 }
-                getReportById(e.rows.reportId)
-                .then((res)=>{
-                    console.log(res)
-                    this.report = res.data;
-                })
-                .catch(err=>{
-                    console.log(err)
-                })
             },
             handleView() {
 
             },
             handleAdd() {
-                console.log("handleAdd")
                 this.$emit("myclick", "hl")
             },
             handleDelete(e) {
@@ -168,7 +163,6 @@
             getReportsAPI() {
                 reports()
                     .then(res => {
-                        console.log(res);
                         this.tableData = res.data;
                     })
                     .catch(err => {

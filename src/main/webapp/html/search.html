@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>校园学术论坛首页</title>
+    <link rel="stylesheet" type="text/css" href="../css/lib/icon.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3274788_tzt1v2xsvuh.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <style lang="css">
+        @import "../css/home.css";
+        @import "../css/lib/total.css";
+    </style>
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/lib/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="module">
+        window.init = function () {
+            hideThemeList();
+        }
+        window.showThemeList = function () {
+            $(".search-theme1").show();
+        }
+        window.hideThemeList = function () {
+            $(".search-theme1").hide();
+        }
+    </script>
+</head>
+<body id="body" onload="init()">
+
+<div id="home">
+<head-item></head-item>
+<!--搜索框-->
+    <div style="margin-top: 15px;" class="letRowCenter">
+        <el-input placeholder="请输入内容" v-model="input" class="input-with-select">
+            <el-select v-model="select" slot="prepend" placeholder="请选择">
+                <el-option label="报告题目" value="1"></el-option>
+                <el-option label="报告人" value="2"></el-option>
+                <el-option label="关键字" value="3"></el-option>
+                <el-option label="模糊查询" value="3"></el-option>
+            </el-select>
+            <el-button slot="append" icon="el-icon-search" @click="search1"></el-button>
+        </el-input>
+    </div>
+    <div class="letRowCenter" style="margin-top: 20px;margin-bottom: 20px;font-size: 12px">
+        <span style="font-size: 12px;">排序方式：</span>
+        <el-radio-group v-model="radio">
+            <el-radio :label="1">相关度排序</el-radio>
+            <el-radio :label="2">按发布时间最新排序</el-radio>
+            <el-radio :label="3">按发布时间最晚排序</el-radio>
+            <el-radio :label="4">按点亮排序</el-radio>
+            <el-radio :label="5">按回复数排序</el-radio>
+        </el-radio-group>
+    </div>
+<!--搜索结果-->
+    <div v-for="report in reportList"style="margin: 5px 250px;height: 60px">
+        <div style="">
+            <div>22-25-07</div>
+            <div>{{report.reportTitle}}</div>
+            <div>点赞，回复</div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import {getReportUrlByNewest, getReports,searchByReportTitle,searchByKeyword,searchByReportPeople} from "../js/service/service.js";
+    import {navigateToReport,navigateToSearchPage} from "../js/API/pageTurn.js";
+    import {getQueryVariable} from "../js/API/common.js"
+    import {head} from "../js/service/headCom.js";
+
+    let reportItem = {
+        props: {
+            report: Object,
+            title: String
+        },
+        template: '<dt class="report-item"><span class="report-title click"><a>【学术报告】{{report.reportTitle}}</a></span><span class="report-date">2021-05-21</span></dt>'
+    }
+
+    let vm = new Vue({
+        el: "#home",
+        components: {
+            'head-item': head,
+        },
+        data: function () {
+            return {
+                radio: 1,
+                reportList: [],
+                input: '',
+                select: '1',
+            }
+        },
+        methods: {
+
+
+            navigateToReportDetail: function (reportId) {
+                navigateToReport(reportId);
+            },
+
+            searchByTitle(keyword){
+                searchByReportTitle({'keyword':keyword})
+                    .then((res)=>{
+                        this.reportList = res.data;
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+            },
+            searchByPeople(keyword){
+                searchByReportPeople({'keyword':keyword})
+                .then(res=>{
+                    this.reportList = res.data;
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+            },
+            searchByKeyword1(keyword){
+                searchByKeyword({'keyword':keyword})
+                    .then(res=>{
+                        this.reportList = res.data;
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+            },
+            search1(){
+                if(this.input === ""){
+                    alert("输入不能为空");
+                    return;
+                }
+                console.log(this.select);
+                navigateToSearchPage(this.select,encodeURI(encodeURI(this.input)));
+
+                //
+            }
+        },
+        mounted() {
+            this.select = getQueryVariable("searchTheme");
+            this.input = getQueryVariable("keyword")
+
+            if(this.select === '1'){
+                this.searchByTitle(this.input);
+            }else if(this.select === '2'){
+                // navigateToSearchPage('2',this.input);
+                this.searchByTitle(this.input);
+            }else if(this.select === '3'){
+                this.searchByKeyword1(this.input)
+            }else if(this.select === '4'){
+
+            }
+            console.log(this.input);
+            this.input = decodeURI(decodeURI(this.input))
+        },
+    })
+</script>
+<style>
+    .el-select .el-input {
+        width: 130px;
+    }
+    .el-input {
+        width: 1000px
+    }
+    .input-with-select .el-input-group__prepend {
+        background-color: #fff;
+    }
+
+</style>
+</body>
+</html>

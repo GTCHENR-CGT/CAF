@@ -38,6 +38,7 @@
         <mapper resource="com/gtchenr/mapper/TeamMapper.xml"/>
         <mapper resource="com/gtchenr/mapper/UserMapper.xml"/>
         <mapper resource="com/gtchenr/mapper/ReportMapper.xml"/>
+        <mapper resource="com/gtchenr/mapper/CommentMapper.xml"/>
     </mappers>
 
 </configuration>

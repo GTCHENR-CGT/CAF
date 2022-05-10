@@ -6,7 +6,7 @@ let editDialog = {
         "report-form": reportForm
     },
     props: {
-        report: {},
+        report1: {},
         dialogvisible: {
             type: Boolean,
             default: false
@@ -32,6 +32,7 @@ let editDialog = {
         },
         dialogVisibleChange() {
             console.log(this.dialogVisible)
+            console.log(this.report1)
             this.dialogVisible = this.dialogvisible;
         },
 
@@ -46,15 +47,13 @@ let editDialog = {
 
     },
     mounted(){
-        console.log("editDialog======================");
-        console.log(this.report)
     },
     template: '                        <el-dialog\n' +
         '                                title="报告信息"\n' +
         '                                :visible.sync="dialogVisible"\n' +
         '                                width="30%"\n' +
         '                                :before-close="handleClose">\n' +
-        '                            <report-form></report-form>\n' +
+        '                            <report-form :report="report1"></report-form>\n' +
         '                            <span slot="footer" class="dialog-footer">\n' +
         '                                <el-button @click="handleCancel">取 消</el-button>\n' +
         '                                <el-button type="primary" @click="handleConfirm">确 定</el-button>\n' +

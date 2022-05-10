@@ -4,8 +4,10 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/html/admin.html" value="file://$PROJECT_DIR$/src/main/webapp/html" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/html/home.html" value="file://$PROJECT_DIR$/src/main/webapp/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/html/publishReport.html" value="file://$PROJECT_DIR$/src/main/webapp/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/html/register.html" value="file://$PROJECT_DIR$/src/main/webapp/html" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/html/reportDetail1.html" value="file://$PROJECT_DIR$/src/main/webapp/html" />
       </map>
     </option>
   </component>

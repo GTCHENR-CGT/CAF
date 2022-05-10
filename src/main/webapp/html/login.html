@@ -5,14 +5,14 @@
     <title>用户登录</title>
     <link rel="stylesheet" type="text/css" href="../css/lib/icon.css">
     <style lang="scss">
-        @import "./css/loginPage.css";
-        @import "./css/lib/total.css";
+        @import "../css/loginPage.css";
+        @import "../css/lib/total.css";
     </style>
     <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
     <script type="module">
-        import {login, authorization} from "./js/service/login/service.js";
-        import {getStorage, setStorage} from "./js/API/common.js";
-        import {navigateToHome, navigateToRegister} from "./js/API/pageTurn.js"
+        import {login, authorization} from "../js/service/login/service.js";
+        import {setStorage} from "../js/API/common.js";
+        import {navigateToHome, navigateToRegister} from "../js/API/pageTurn.js"
 
         window.register1 = function () {
             navigateToRegister();
@@ -39,7 +39,6 @@
                 )
         }
         window.authorization1 = function () {
-            console.log("=========="+getStorage("accessToken"))
             $("#sign").hide();
             authorization()
                 .then((res) => {

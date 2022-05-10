@@ -7,6 +7,7 @@ import com.gtchenr.pojo.User;
 import com.gtchenr.service.AdminService;
 import com.gtchenr.service.NormalUserService;
 import com.gtchenr.service.ReportService;
+import com.gtchenr.utils.ELKUtil;
 import com.gtchenr.utils.MybatisUtil;
 import com.gtchenr.utils.TokenUtil;
 import com.gtchenr.vo.ResultVO;
@@ -136,6 +137,7 @@ public class AdminController {
     public ResultVO deleteReport(@PathVariable("reportId") Integer id){
         System.out.println("report/delete/"+id);
         Integer delete = reportService.delete(id);
+//        ELKUtil.delete("report",)
         if(delete == 1){
             return new ResultVO(201, "success", null);
         }

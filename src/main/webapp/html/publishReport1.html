@@ -23,7 +23,7 @@
     <div class="user_info flex-row-reverse" v-if="isLogin">
         <div class="user_item">
 <!--            <label>欢迎校园学术论坛</label>-->
-            <label>你好，{{}}!</label>
+            <label>你好，{{userName}}!</label>
             <label class="click" style="color: blue">我的首页</label>
             <label class="click" style="color: blue">消息</label>
             <label class="admin click" style="color: blue"><a>管理员登录</a></label>
@@ -131,6 +131,7 @@
             };
             return {
                 isLogin:true,
+                userName:'gtchenr',
                 ruleForm: {
                     reportTitle:'',
                     reportPeople: '',

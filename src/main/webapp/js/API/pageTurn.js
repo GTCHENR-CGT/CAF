@@ -34,3 +34,19 @@ export function navigateToPersonalHome() {
 
     return navigateTo(pageUrls.personal);
 }
+
+export function navigateToLogin1(){
+
+    return navigateTo(pageUrls.login)
+}
+
+export function navigateToRegister(){
+
+    return navigateTo(pageUrls.register);
+}
+
+export function navigateToSearchPage(searchTheme,keyword){
+
+    return navigateTo(pageUrls.search+"?searchTheme="+searchTheme+"&keyword="+keyword);
+
+}

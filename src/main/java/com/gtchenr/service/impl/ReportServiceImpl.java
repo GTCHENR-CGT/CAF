@@ -19,7 +19,8 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public List<Report> getReports() {
-        return reportMapper.queryReportsInfo();
+//        return reportMapper.queryReportsInfo();
+        return reportMapper.queryReports();
     }
 
     @Override

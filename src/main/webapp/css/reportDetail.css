@@ -10,10 +10,10 @@
     padding: 5px 0;
 }
 
-.report {
-    /*font-weight: bolder;*/
+.report-xi {
+
     font-size: 15px;
-    margin: 10px 0;
+    /*margin: 10px 0;*/
 }
 
 .report label:first-child {
@@ -95,5 +95,9 @@
 
 .comment-list .comment-item:not(:last-child) {
 
+
     border-bottom: silver solid 1px;
+}
+.comment-item{
+    margin: 10px 0;
 }

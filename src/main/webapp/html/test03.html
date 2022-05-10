@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的主页</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <style lang="css">
+        @import "../css/home.css";
+        @import "../css/lib/total.css";
+    </style>
+</head>
+<body>
+<div id="app">
+    <head-com></head-com>
+</div>
+<!-- 先引入 Vue -->
+<script type="text/javascript" src="../js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="module">
+    import {head} from "../js/service/headCom.js"
+
+
+
+    new Vue({
+        el: '#app',
+        components: {
+            'head-com': head
+        },
+        data: function () {
+            return {
+            }
+        },
+        methods: {}
+    })
+</script>
+<style>
+
+    body {
+        background-color: rgb(246, 246, 246);
+    }
+
+    .el-header, .el-footer {
+        /*background-color: #B3C0D1;*/
+        /*color: #333;*/
+
+        text-align: center;
+        line-height: 60px;
+    }
+
+
+    .el-main {
+        /*background-color: #E9EEF3;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+    body > .el-container {
+        margin-bottom: 40px;
+    }
+
+    .el-container:nth-child(7) .el-aside {
+        line-height: 320px;
+    }
+
+    .el-header img {
+        border-radius: 50%;
+        border: silver solid 1px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .tiezi:hover {
+        background-color: rgb(240, 240, 240);
+    }
+</style>
+</body>
+</html>

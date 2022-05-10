@@ -1,10 +1,14 @@
 package com.gtchenr.controller;
 
+import com.gtchenr.mapper.CommentMapper;
+import com.gtchenr.pojo.Comment;
 import com.gtchenr.pojo.User;
 import com.gtchenr.pojo.use.Operate;
 import com.gtchenr.pojo.Report;
 import com.gtchenr.service.ReportService;
 import com.gtchenr.service.impl.ReportServiceImpl;
+import com.gtchenr.utils.ELKUtil;
+import com.gtchenr.utils.MybatisUtil;
 import com.gtchenr.utils.TokenUtil;
 import com.gtchenr.vo.ResultVO;
 import org.apache.ibatis.annotations.Param;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -25,6 +30,7 @@ public class ReportController {
 //    @Autowired
 //    ReportService reportService;
     ReportService reportService = new ReportServiceImpl();
+    private CommentMapper commentMapper = MybatisUtil.getSqlSession().getMapper(CommentMapper.class);
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -46,7 +52,6 @@ public class ReportController {
     @ResponseBody
     public ResultVO add() {
 
-
         return null;
     }
 
@@ -66,11 +71,19 @@ public class ReportController {
     }
 
 
-    @RequestMapping(value = "comments", method = RequestMethod.POST)
+    @RequestMapping(value = "getCommentsByReportId", method = RequestMethod.GET)
     @ResponseBody
-    public ResultVO comments() {
+    public ResultVO getCommentsByReportId(Integer reportId) {
+        System.out.println("dddddddddd");
+        List<Comment> comments = commentMapper.queryCommentByReportId(reportId);
+        return new ResultVO(201,"success",comments);
+    }
 
-        return null;
+    @RequestMapping(value = "getCommentsByUserId", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultVO getCommentsByUserId(Integer userId) {
+        List<Comment> comments = commentMapper.queryCommentByReportId(userId);
+        return new ResultVO(201,"success",comments);
     }
 
     @RequestMapping(value = "like", method = RequestMethod.POST)
@@ -91,6 +104,7 @@ public class ReportController {
             return new ResultVO(201, "no login", null);
         report.setUserId(user.getUserId());
         boolean flag = reportService.add(report);
+        ELKUtil.add("report",report);
         if (flag)
             return new ResultVO(200, "success", null);
         return new ResultVO(202, "fail", null);
@@ -101,13 +115,13 @@ public class ReportController {
     public ResultVO publish1(@Param("report") Report report) {
         System.out.println("hello");
         boolean flag = reportService.add(report);
+        ELKUtil.add("report",report);
         if (flag)
             return new ResultVO(201, "success", null);
         return new ResultVO(202, "fail", null);
     }
     public boolean record(Operate operate) {
         Date date = new Date();
-
         return true;
     }
 
@@ -117,7 +131,5 @@ public class ReportController {
 
         return new ResultVO(202, "fail", null);
     }
-
-
 
 }

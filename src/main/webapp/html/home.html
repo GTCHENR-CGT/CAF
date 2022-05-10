@@ -5,67 +5,32 @@
     <title>校园学术论坛首页</title>
     <link rel="stylesheet" type="text/css" href="../css/lib/icon.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_3274788_tzt1v2xsvuh.css">
-
-    <style lang="css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/lib/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
         @import "../css/home.css";
         @import "../css/lib/total.css";
     </style>
-    <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../js/lib/vue.js"></script>
-    <script type="module">
-        window.init = function () {
-            console.log("ssshhh");
-            hideThemeList();
-        }
-        window.showThemeList = function () {
-            $(".search-theme1").show();
-        }
-        window.hideThemeList = function () {
-            $(".search-theme1").hide();
-        }
-    </script>
 </head>
 <body id="body" onload="init()">
 
-<div id="home">
-    <!--用户信息-->
-    <div class="user_info flex-row-reverse" v-if="!isLogin" style="background-color: white">
-        <div class="user_item">
-            <label>欢迎使用校园学术论坛，请先<a>登录</a>或者<a>注册</a></label>
-            <label class="admin click" @click="navigateToAdminLogin1()">管理员登录</label>
-        </div>
-    </div>
-    <div class="user_info flex-row-reverse" style="background-color: white" v-if="isLogin">
-        <div class="user_item">
-            <!--            <label>欢迎校园学术论坛</label>-->
-            <label>你好，{{borderSelected}}!</label>
-            <label class="click" style="color: blue" @click="navigateToPersonal1()">我的首页</label>
-            <label class="click" style="color: blue">消息</label>
-            <label class="admin click" style="color: blue" @click="navigateToAdminLogin1()"><a>管理员登录</a></label>
-        </div>
-    </div>
-    <!--论坛版块选择-->
-    <div class="title flex-row letallCenter" id="border">
-        <div class="title_item letallCenter">学术论坛</div>
-
-        <border-item v-for="border in borders" :name="border.name" :select="border.select"
-                     @click.native="borderClick(border)"></border-item>
-    </div>
+<div id="app">
+    <head-item></head-item>
     <!--搜索框-->
-
-    <div class="search letColumnCenter" id="search">
-        <div onmouseover="showThemeList()" onmouseout="hideThemeList()">
-            <div class="search-theme2 letallCenter">{{themeSelected}}</div>
-            <dl class="search-theme1">
-                <div v-for="theme in themes">
-                    <theme-item :theme="theme.name" :select="theme.select"
-                                @click.native="themeClick(theme)"></theme-item>
-                </div>
-            </dl>
-        </div>
-        <input class="search-input"/>
-        <div class="search-icon click"><span class="iconfont icon-sousuo"
-                                             style="font-size: 20px;align-content: center"></span></div>
+    <div style="margin-top: 15px;" class="letRowCenter">
+        <el-input placeholder="请输入内容" v-model="input" class="input-with-select">
+            <el-select v-model="select" slot="prepend" placeholder="请选择">
+                <el-option label="报告题目" value="1"></el-option>
+                <el-option label="报告人" value="2"></el-option>
+                <el-option label="关键字" value="3"></el-option>
+                <el-option label="模糊查询" value="4"></el-option>
+            </el-select>
+            <el-button slot="append" icon="el-icon-search" @click="search1"></el-button>
+        </el-input>
     </div>
 
     <div class="flex-row letRowCenter">
@@ -96,77 +61,47 @@
 </div>
 
 <script type="module">
-    import {getReportUrlByNewest, getReports} from "../js/service/home/service.js";
-    import {navigateToReport, navigateToPublishReport,navigateToAdminLogin,navigateToPersonalHome} from "../js/API/pageTurn.js";
-
+    import {getReports} from "../js/service/home/service.js";
+    import {head1} from "../js/service/headCom1.js";
+    import {
+        navigateToReport,
+        navigateToPublishReport,
+        navigateToSearchPage,
+    } from "../js/API/pageTurn.js";
+    window.init = function () {
+        console.log("ssshhh");
+        hideThemeList();
+    }
+    window.showThemeList = function () {
+        $(".search-theme1").show();
+    }
+    window.hideThemeList = function () {
+        $(".search-theme1").hide();
+    }
     let reportItem = {
         props: {
             report: Object,
             title: String
         },
-        template: '<dt class="report-item"><span class="report-title click"><a>【学术报告】{{report.reportTitle}}</a></span><span class="report-date">2021-05-21</span></dt>'
+        template: '<dt class="report-item"><span class="report-title click"><a>【学术报告】{{report.reportTitle}}</a></span><span class="report-date">{{report.publishTime}}</span></dt>'
     }
-    let borderItem = {
-        props: {
-            name: String,
-            select: String
-        },
-        template: '<div class="letallCenter click title_item" :class="select">{{name}}</div>'
-    }
-    let themeItem = {
-        props: {
-            theme: String,
-            select: String,
-        },
-        template: '<dt class="letallCenter height-40 click" :class="select">{{theme}}</dt>'
-    };
 
-    let vm = new Vue({
-        el: "#home",
+
+    new Vue({
+        el: "#app",
         components: {
-            'border-item': borderItem,
+            'head-item' : head1,
             'report-item': reportItem,
-            'theme-item': themeItem
         },
         data: function () {
             return {
+                input: '',
+                select: '1',
                 reportList: Array,
-                borders: [{name: "论坛首页", select: "title_item_select"},
-                    {name: "热度推荐", select: ""},
-                    {name: "最新发布", select: ""},
-                    {name: "最新回复", select: ""},
-                    {name: "计算机", select: ""},
-                    {name: "数学", select: ""}],
-                borderSelected: "论坛首页",
-                themes: [{name: '主题', select: "search-theme-select"},
-                    {name: '关键字', select: ""},
-                    {name: '全名', select: ""},
-                    {name: '汇报人', select: ""}],
-                themeSelected: '主题',
-                isLogin:true
+                isLogin: true
             }
         },
         methods: {
-            borderClick: function (border) {
-                this.borderSelected = border.name;
-                for (let i = 0; i < this.borders.length; i++) {
-                    if (border.name === this.borders[i].name) {
-                        this.borders[i].select = "title_item_select";
-                    } else {
-                        this.borders[i].select = "";
-                    }
-                }
-            },
-            themeClick: function (theme) {
-                this.themeSelected = theme.name;
-                for (let i = 0; i < this.themes.length; i++) {
-                    if (theme.name === this.themes[i].name) {
-                        this.themes[i].select = "search-theme-select";
-                    } else {
-                        this.themes[i].select = "";
-                    }
-                }
-            },
             navigateToReportDetail: function (reportId) {
                 navigateToReport(reportId);
             },
@@ -174,12 +109,17 @@
             publish: function () {
                 navigateToPublishReport()
             },
-            navigateToAdminLogin1(){
-                console.log("navigateToAdminLogin1");
-                navigateToAdminLogin();
+            navigateToSearch1() {
+                navigateToSearchPage();
             },
-            navigateToPersonal1(){
-                navigateToPersonalHome()
+            search1() {
+                if (this.input === "") {
+                    alert("输入不能为空");
+                    return;
+                }
+                console.log(this.select);
+                navigateToSearchPage(this.select, encodeURI(encodeURI(this.input)));
+                //
             }
         },
         mounted() {
@@ -198,6 +138,18 @@
         },
     })
 </script>
+<style>
+    .el-select .el-input {
+        width: 130px;
+    }
 
+    .el-input {
+        width: 1000px
+    }
+
+    .input-with-select .el-input-group__prepend {
+        background-color: #fff;
+    }
+</style>
 </body>
 </html>

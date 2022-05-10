@@ -1,9 +1,7 @@
 let reportForm = {
 
     props:{
-        report:{
-            type:Object
-        }
+        report:{}
     },
     data: function () {
         var checkInput = (rule, value, callback) => {
@@ -128,10 +126,11 @@ let reportForm = {
                     console.log(err);
                 })
         },
-
-        mounted(){
-            this.ruleForm = this.report;
-        }
+    },
+    mounted(){
+        this.ruleForm = this.report;
+        console.log("=========================")
+        console.log(this.report)
     },
     template:'            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"\n' +
         '                     class="demo-ruleForm">\n' +

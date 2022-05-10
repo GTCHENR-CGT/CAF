@@ -1,6 +1,4 @@
-#body {
-    /*background-color: rgb(234,234,234);*/
-}
+
 
 .user_info {
     height: 25px;
@@ -153,6 +151,7 @@
 }
 
 .report-date {
+    font-size: 13px;
     float: right;
 }
 

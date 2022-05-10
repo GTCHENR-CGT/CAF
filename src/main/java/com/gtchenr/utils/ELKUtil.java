@@ -20,17 +20,14 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.AbstractQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -47,6 +44,12 @@ public class ELKUtil<T> {
     private static long TIMEOUT = 2;
     private static int RETRY_NUM = 3;
 
+
+
+    public static String getDocId(){
+
+        return "";
+    }
     /**
      * 通过文档id查找文档内容
      *
@@ -111,7 +114,6 @@ public class ELKUtil<T> {
             e.printStackTrace();
             return false;
         }
-
         return true;
     }
 
@@ -216,6 +218,10 @@ public class ELKUtil<T> {
                 return QueryBuilders.idsQuery().addIds(param);
             case MATCH_SEARCH:
                 return QueryBuilders.matchQuery(param[0], text);
+            case TERM_SEARCH:
+                return QueryBuilders.termQuery(text,param[0]);
+            case WILDCARD_SEARCH:
+                return QueryBuilders.wildcardQuery(param[0],text);
         }
         return null;
     }
@@ -345,4 +351,31 @@ public class ELKUtil<T> {
 
         return query(SearchMethods.MATCH_SEARCH, index, page, size, text, name);
     }
+
+    /**
+     * 精确查询，不会进行分词
+     * @param index
+     * @param text
+     * @param name
+     * @return
+     */
+    public static List<String> queryByTerm(String index, String text, String name){
+        SearchRequest searchRequest = createSearchRequest(SearchMethods.TERM_SEARCH, index, text, name);
+        SearchResponse searchResponse = getSearchResponse(searchRequest);
+        return parseSearchResponse(searchResponse);
+    }
+
+    /**
+     * 模糊查询
+     * @param index
+     * @param text
+     * @param name
+     * @return
+     */
+    public static List<String> queryByWildcard(String index, String text, String name){
+        SearchRequest searchRequest = createSearchRequest(SearchMethods.WILDCARD_SEARCH, index, text, name);
+        SearchResponse searchResponse = getSearchResponse(searchRequest);
+        return parseSearchResponse(searchResponse);
+    }
+    
 }

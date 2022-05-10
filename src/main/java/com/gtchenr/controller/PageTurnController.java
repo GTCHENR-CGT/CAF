@@ -16,13 +16,13 @@ public class PageTurnController {
     @RequestMapping("reportDetail")
     public ModelAndView navigateToReportDetail() {
         System.out.println("navigateToReportDetail--------");
-        return new ModelAndView("reportDetail");
+        return new ModelAndView("reportDetail1");
     }
 
     @RequestMapping("publishReport")
     public ModelAndView navigateToPublishReport() {
         System.out.println("navigateToPublishReport-------------");
-        return new ModelAndView("publishReport");
+        return new ModelAndView("publishReport1");
     }
 
     @RequestMapping("admin")
@@ -41,5 +41,23 @@ public class PageTurnController {
     public ModelAndView navigateToPersonal(){
         System.out.println("navigateToAdminLogin");
         return new ModelAndView("personalHome");
+    }
+
+    @RequestMapping("login")
+    public ModelAndView navigateToLogin(){
+        System.out.println("navigateToLogin");
+        return new ModelAndView("login");
+    }
+
+    @RequestMapping("register")
+    public ModelAndView navigateToRegister(){
+        System.out.println("navigateToRegister");
+        return new ModelAndView("register");
+    }
+
+    @RequestMapping("search")
+    public ModelAndView navigateToSearch(){
+        System.out.println("navigateToSearch");
+        return new ModelAndView("search");
     }
 }
