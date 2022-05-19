@@ -39,6 +39,15 @@
         insert into user(role_id, login_name, password, name, sex, phone, email)
             value (#{roleId},#{loginName},#{password},#{name},#{sex},#{phone},#{email})
     </insert>
+
+    <update id="update" parameterType="User">
+        update user set name=#{name}, sex=#{sex}, phone=#{phone}, email=#{email}
+        where user_id= #{userId}
+    </update>
+
+    <delete id="delete" parameterType="User">
+        delete from user where user_id = #{arg0}
+    </delete>
     <resultMap id="baseMap" type="User">
         <result column="user_id" property="userId"/>
         <result column="role_id" property="roleId"/>

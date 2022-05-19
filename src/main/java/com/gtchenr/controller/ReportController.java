@@ -44,7 +44,7 @@ public class ReportController {
     @RequestMapping(value = "reports", method = RequestMethod.GET)
     @ResponseBody
     public ResultVO getReports() {
-        return new ResultVO(200, "success", reportService.getReports());
+        return new ResultVO(200, "success", reportService.reports());
     }
 
 
@@ -96,7 +96,8 @@ public class ReportController {
 
     @RequestMapping(value = "publish", method = RequestMethod.POST)
     @ResponseBody
-    public ResultVO publish(HttpServletRequest request, @Param("report") Report report) {
+    public ResultVO publish(Report report,HttpServletRequest request) {
+        System.out.println("pppppppppp");
         String accessToken = request.getHeader("accessToken");
         String refreshToken = request.getHeader("refreshToken");
         User user = TokenUtil.parseAccessToken(accessToken, refreshToken);

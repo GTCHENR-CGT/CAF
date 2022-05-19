@@ -13,6 +13,7 @@
 </head>
 <body>
 <div id="app">
+
     <el-container>
         <el-header height="200">
             <h1 class="letallCenter">用户注册</h1>
@@ -58,6 +59,10 @@
 <!-- 引入组件库 -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script type="module">
+    import {register} from "../js/service/service.js";
+    import {parseSex} from "../js/API/common.js";
+    import {navigateToLogin1} from "../js/API/pageTurn.js";
+
     new Vue({
         el: '#app',
         data: function () {
@@ -113,7 +118,6 @@
                     sex: Number,
                     phone: '',
                     email: '',
-                    password:'',
 
                 },
                 rules: {
@@ -132,10 +136,10 @@
                     sex: [
                         {validator: checkInput, trigger: 'blur'}
                     ],
-                    email:[
+                    email: [
                         {validator: checkInput, trigger: 'blur'}
                     ],
-                    phone:[
+                    phone: [
                         {validator: checkInput, trigger: 'blur'}
                     ],
                 }
@@ -143,22 +147,30 @@
         },
         methods: {
             submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
-                    console.log(this.ruleForm);
-                    if (valid) {
-                        console.log("success submit")
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
+                console.log(this.ruleForm);
+                let data = {
+                    'loginName': this.ruleForm.loginName,
+                    'password': this.ruleForm.pass,
+                    'name': this.ruleForm.name,
+                    'sex': parseSex(this.ruleForm.sex),
+                    'phone': this.ruleForm.phone,
+                    'email': this.ruleForm.email
+                };
+                register(data)
+                    .then(res => {
+                        alert("注册成功！跳转到登录页面");
+                        navigateToLogin1();
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             },
             resetForm(formName) {
                 console.log(formName)
                 this.$refs[formName].resetFields();
             },
 
-            register1(){
+            register1() {
 
             }
         }

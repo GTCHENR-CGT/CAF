@@ -17,9 +17,11 @@
         @import "../css/lib/total.css";
     </style>
     <script type="module">
-        import {getReportById, getUserInfo,getCommentsByUserId,getCommentsByReportId,publishComment} from "../js/service/service.js"
+        import {getReportById, getUserInfo1,getCommentsByUserId,getCommentsByReportId,publishComment,deleteReport1} from "../js/service/service.js"
         import {setSessionStorage, getSessionStorage,getStorage} from "../js/API/common.js"
         import {head} from "../js/service/headCom.js";
+        import {editDialog} from "../js/service/reportDetails/editDialog.js"
+        import {navigateToHome, navigateToPersonalHome} from "../js/API/pageTurn.js";
 
         let reportCom = {
             props: {
@@ -49,6 +51,7 @@
                 'report-item': reportCom,
                 'comment-item': commentCom,
                 'head-item': head,
+                'edit-dialog':editDialog
             },
             data: function () {
                 return {
@@ -67,6 +70,8 @@
                     ],
                     userInfo:{},
                     reportInfo:{},
+                    dialogVisible : false,
+                    reportId:1
                 }
             },
             methods: {
@@ -108,16 +113,24 @@
                     })
                 },
                 handleEdit(){
-
+                    this.dialogVisible = true;
                 },
                 handleDelete(){
-
+                    console.log(this.getQueryVariable("reportId"))
+                    let data = {
+                        'reportId':this.getQueryVariable("reportId")
+                    }
+                    deleteReport1(data)
+                    .then((res)=>{
+                        alert("删除成功！跳转会主页！");
+                        // navigateToHome();
+                        navigateToPersonalHome()
+                    })
                 }
             },
             async mounted() {
-                let reportId = this.getQueryVariable("reportId");
-                setSessionStorage("reportId", reportId);
-                await getReportById(getSessionStorage("reportId"))
+                this.reportId = this.getQueryVariable("reportId");
+                await getReportById(this.reportId)
                     .then((res) => {
                         this.report = res.data;
                         this.userId = res.data.userId;
@@ -159,7 +172,7 @@
                     .catch((err) => {
                         console.log(err);
                     })
-                await getUserInfo({'userId': this.userId})
+                await getUserInfo1({'userId': this.userId})
                     .then(res => {
                         this.userInfo = res.data;
                     })
@@ -231,6 +244,7 @@
             </div>
         </div>
     </div>
+    <edit-dialog :dialogvisible1="dialogVisible" :reportt="reportId"></edit-dialog>
 </div>
 
 </body>

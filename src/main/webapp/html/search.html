@@ -39,7 +39,7 @@
                 <el-option label="报告题目" value="1"></el-option>
                 <el-option label="报告人" value="2"></el-option>
                 <el-option label="关键字" value="3"></el-option>
-                <el-option label="模糊查询" value="3"></el-option>
+                <el-option label="模糊查询" value="4"></el-option>
             </el-select>
             <el-button slot="append" icon="el-icon-search" @click="search1"></el-button>
         </el-input>
@@ -55,11 +55,12 @@
         </el-radio-group>
     </div>
 <!--搜索结果-->
-    <div v-for="report in reportList"style="margin: 5px 250px;height: 60px">
+    <div v-for="item in reportList"style="margin: 5px 250px;height: 60px">
         <div style="">
-            <div>22-25-07</div>
-            <div>{{report.reportTitle}}</div>
-            <div>点赞，回复</div>
+<!--            <div>22-25-07</div>-->
+<!--            <div>{{report.reportTitle}}</div>-->
+<!--            <div>点赞，回复</div>-->
+            <report-item :report="item" @click.native="navigateToDetails(item.reportId)"></report-item>
         </div>
     </div>
 </div>
@@ -75,13 +76,14 @@
             report: Object,
             title: String
         },
-        template: '<dt class="report-item"><span class="report-title click"><a>【学术报告】{{report.reportTitle}}</a></span><span class="report-date">2021-05-21</span></dt>'
+        template: '<dt class="report-item"><span class="report-title click"><a>【题目】{{report.reportTitle}}【汇报人】{{report.reportPeople}}</a></span><span class="report-date">{{report.publishTime}}</span></dt>'
     }
 
     let vm = new Vue({
         el: "#home",
         components: {
             'head-item': head,
+            'report-item':reportItem
         },
         data: function () {
             return {
@@ -89,11 +91,43 @@
                 reportList: [],
                 input: '',
                 select: '1',
+                reportList1:[]
             }
         },
+        watch:{
+            'radio': {
+                handler(newVal, oldVal) {
+
+                    switch (newVal){
+                        case 1:
+                            this.reportList = this.reportList1;
+                            break;
+                        case 2:
+                            this.reportList.sort(function (a, b) {
+                                return a.publishTime < b.publishTime ? 1 : -1
+                            })
+                            break;
+                        case 3:
+                            this.reportList.sort(function (a, b) {
+                                return a.publishTime > b.publishTime ? 1 : -1
+                            })
+                            break;
+                        case 4:
+                            alert("功能正在开发！")
+                            this.radio = 1;
+                            break;
+                        case 5:
+                            alert("功能正在开发！")
+                            this.radio = 1;
+                            break;
+                    }
+                    console.log("=====================")
+                },
+                deep: true,  // 深度监听
+                immediate: true,
+            },
+        },
         methods: {
-
-
             navigateToReportDetail: function (reportId) {
                 navigateToReport(reportId);
             },
@@ -102,6 +136,7 @@
                 searchByReportTitle({'keyword':keyword})
                     .then((res)=>{
                         this.reportList = res.data;
+                        this.reportList1 = res.data;
                     })
                     .catch(err=>{
                         console.log(err)
@@ -111,6 +146,7 @@
                 searchByReportPeople({'keyword':keyword})
                 .then(res=>{
                     this.reportList = res.data;
+                    this.reportList1 = res.data;
                 })
                 .catch(err=>{
                     console.log(err)
@@ -120,6 +156,7 @@
                 searchByKeyword({'keyword':keyword})
                     .then(res=>{
                         this.reportList = res.data;
+                        this.reportList1 = res.data;
                     })
                     .catch(err=>{
                         console.log(err)
@@ -134,6 +171,9 @@
                 navigateToSearchPage(this.select,encodeURI(encodeURI(this.input)));
 
                 //
+            },
+            navigateToDetails(id){
+                navigateToReport(id)
             }
         },
         mounted() {
@@ -148,7 +188,7 @@
             }else if(this.select === '3'){
                 this.searchByKeyword1(this.input)
             }else if(this.select === '4'){
-
+                this.searchByKeyword1(this.input)
             }
             console.log(this.input);
             this.input = decodeURI(decodeURI(this.input))

@@ -6,7 +6,6 @@
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
-
 </head>
 <body>
 <div id="app">
@@ -14,35 +13,32 @@
         <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
             <el-menu :default-openeds="['1', '3']">
                 <el-submenu index="1">
-                    <template slot="title"><i class="el-icon-message"></i>用户管理</template>
+                    <template slot="title"><i class="el-icon-setting"></i>用户管理</template>
                     <el-menu-item-group>
-                        <template slot="title">分组一</template>
                         <el-menu-item index="1-1">所有用户</el-menu-item>
                         <el-menu-item index="1-2">被举报用户</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="2">
-                    <template slot="title"><i class="el-icon-menu"></i>报告管理</template>
+                    <template slot="title"><i class="el-icon-setting"></i>报告管理</template>
                     <el-menu-item-group>
-                        <template slot="title">分组一</template>
                         <el-menu-item index="2-1">查看所有报告</el-menu-item>
                         <el-menu-item index="2-2">查看要审核的报告</el-menu-item>
+                        <el-menu-item index="2-3">查看被举报的报告</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="3">
                     <template slot="title"><i class="el-icon-setting"></i>评论管理</template>
                     <el-menu-item-group>
-                        <template slot="title">分组一</template>
-                        <el-menu-item index="3-1">选项1</el-menu-item>
-                        <el-menu-item index="3-2">选项2</el-menu-item>
+                        <el-menu-item index="3-1">查看被举报的评论</el-menu-item>
+                        <el-menu-item index="3-2">查看所有评论</el-menu-item>
                     </el-menu-item-group>
-                    <el-menu-item-group title="分组2">
-                        <el-menu-item index="3-3">选项3</el-menu-item>
+                </el-submenu>
+                <el-submenu index="4">
+                    <template slot="title"><i class="el-icon-setting"></i>版块管理</template>
+                    <el-menu-item-group>
+                        <el-menu-item index="3-1">所有版块</el-menu-item>
                     </el-menu-item-group>
-                    <el-submenu index="3-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-                    </el-submenu>
                 </el-submenu>
             </el-menu>
         </el-aside>
@@ -60,7 +56,7 @@
                 <span>{{admin.name}}</span>
             </el-header>
             <el-main>
-                <template>
+                <template >
                     <table-com :data="tableData" type="report" :operate="operate" ref="table"
                                @handledelete="handleDelete" @handleedit="handleEdit">
                     </table-com>

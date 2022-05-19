@@ -49,22 +49,10 @@
                     <el-input v-model="ruleForm.reportLocation"></el-input>
                 </el-form-item>
                 <el-form-item label="开始时间">
-                    <el-col :span="11">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.beginDate" style="width: 100%;"></el-date-picker>
-                    </el-col>
-                    <el-col class="line" :span="2">-</el-col>
-                    <el-col :span="11">
-                        <el-time-picker placeholder="选择时间" v-model="ruleForm.beginTime" style="width: 100%;"></el-time-picker>
-                    </el-col>
+                    <el-date-picker v-model="ruleForm.beginTime" type="datetime" placeholder="选择日期时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
                 </el-form-item>
                 <el-form-item label="结束时间">
-                    <el-col :span="11">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.endDate" style="width: 100%; "></el-date-picker>
-                    </el-col>
-                    <el-col class="line" :span="2">-</el-col>
-                    <el-col :span="11">
-                        <el-time-picker placeholder="选择时间" v-model="ruleForm.endTime" style="width: 100%"></el-time-picker>
-                    </el-col>
+                    <el-date-picker v-model="ruleForm.endTime" type="datetime" placeholder="选择日期时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
                 </el-form-item>
                 <el-form-item label="报告摘要">
                     <el-input type="textarea" v-model="ruleForm.reportDetails" rows="4"></el-input>
@@ -85,8 +73,8 @@
 <!-- 引入组件库 -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script type="module">
-    import {publish,publish1} from "../js/service/publish/service.js"
-    import {navigateToHome} from "../js/API/pageTurn.js";
+    import {addReport} from "../js/service/service.js"
+    import {navigateToHome,navigateToPersonalHome} from "../js/API/pageTurn.js";
     new Vue({
         el: '#app',
         data: function () {
@@ -181,32 +169,53 @@
         },
         methods: {
             submitForm(formName) {
-                console.log(this.ruleForm);
                 this.$refs[formName].validate((valid) => {
-                    console.log(this.ruleForm);
                     if (valid) {
                         console.log("success submit")
+                        let data = {
+                            'reportName':this.ruleForm.reportName,
+                            'reportLocation':this.ruleForm.reportLocation,
+                            'reportOrganizer':this.ruleForm.reportOrganizer,
+                            'reportPeople':this.ruleForm.reportPeople,
+                            'reportDetails':this.ruleForm.reportDetails,
+                            'reportPeopleInfo':this.ruleForm.reportPeopleInfo,
+                            'reportBeginTime':this.ruleForm.beginTime,
+                            'reportEndTime':this.ruleForm.endTime,
+                        };
+                        console.log(data)
+                        this.publishReport(data);
                     } else {
                         console.log('error submit!!');
                         return false;
                     }
                 });
+                let data = {
+                    'reportTitle':this.ruleForm.reportTitle,
+                    'reportLocation':this.ruleForm.reportLocation,
+                    'reportOrganizer':this.ruleForm.reportOrganizer,
+                    'reportPeople':this.ruleForm.reportPeople,
+                    'reportDetails':this.ruleForm.reportDetails,
+                    'reportPeopleInfo':this.ruleForm.reportPeopleInfo,
+                    'reportBeginTime':this.ruleForm.beginTime,
+                    'reportEndTime':this.ruleForm.endTime
+                };
+                console.log(data)
+                this.publishReport(data);
+
             },
             resetForm(formName) {
                 console.log(formName)
                 this.$refs[formName].resetFields();
             },
 
-            publishReport: function () {
-                let data = $('#report').serialize();
-                console.log(data);
-                publish(data)
+            publishReport: function (data) {
+                addReport(data)
                     .then((res) => {
                         console.log(res);
-                        if(res.statusCode === 201){
-                            alert("发布成功，跳转返回主页！")
-                            navigateToHome();
-                        }else if(res.statusCode === 202){
+                        if(res.statusCode === 200){
+                            alert("发布成功，跳转返回个人主页！")
+                            navigateToPersonalHome();
+                        }else if(res.statusCode === 201){
                             alert("发布失败，请检测输入！或者是否处于登录状态！");
                         }
                     })

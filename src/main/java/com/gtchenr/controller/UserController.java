@@ -7,15 +7,13 @@ import com.gtchenr.pojo.Comment;
 import com.gtchenr.pojo.Report;
 import com.gtchenr.pojo.User;
 import com.gtchenr.service.impl.NormalUserServiceImpl;
+import com.gtchenr.utils.ELKUtil;
 import com.gtchenr.utils.MybatisUtil;
 import com.gtchenr.utils.TokenUtil;
 import com.gtchenr.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +44,7 @@ public class UserController {
     public ResultVO login(@RequestParam("loginName") String loginName, @RequestParam("password") String password, HttpServletRequest request) {
         System.out.println("用户发起登录请求！");
         boolean flag = normalUserService.login(loginName, password);
+        System.out.println(flag);
         //生成一个token
         if (flag) {
             String accessToken = request.getHeader("accessToken");
@@ -109,7 +108,22 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "userInfo", method = RequestMethod.GET)
-    public ResultVO getUserInfo(Integer userId) {
+    public ResultVO getUserInfo(HttpServletRequest request) {
+        String accessToken = request.getHeader("accessToken");
+        String refreshToken = request.getHeader("refreshToken");
+        User user = TokenUtil.parseAccessToken(accessToken, refreshToken);
+        if(user == null){
+            return new ResultVO(201,"fail",null);
+        }
+        User user1 = userMapper.queryUserByUserId(user.getUserId());
+        if(user1 == null)
+            return new ResultVO(201,"fail",user1);
+        return new ResultVO(201,"success",user1);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "userInfo1", method = RequestMethod.GET)
+    public ResultVO getUserInfo1(Integer userId) {
         User user = userMapper.queryUserByUserId(userId);
         if(user == null)
             return new ResultVO(201,"fail",user);
@@ -170,6 +184,101 @@ public class UserController {
             return new ResultVO(201,"success",comments);
         }
         return new ResultVO(201,"fail",null);
+    }
+
+    @RequestMapping(value = "updateUser", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultVO updateUser(User user,HttpServletRequest request) {
+        Integer flag = 0;
+        String accessToken = request.getHeader("accessToken");
+        String refreshToken = request.getHeader("refreshToken");
+        User user1 = TokenUtil.parseAccessToken(accessToken, refreshToken);
+        if(user1 != null && user1.getUserId()!=null){
+            user.setUserId(user1.getUserId());
+            flag= userMapper.update(user);
+        }
+        if (flag == 1)
+            return new ResultVO(201,"success",null);
+        return new ResultVO(201,"fail",null);
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultVO updateUser(User user) {
+        Integer flag = userMapper.add(user);
+        if (flag == 1)
+            return new ResultVO(201,"success",null);
+        return new ResultVO(201,"fail",null);
+    }
+
+    @RequestMapping(value = "report/delete",method = RequestMethod.POST)
+    @ResponseBody
+    public ResultVO deleteReport(Integer reportId,HttpServletRequest request){
+
+        System.out.println("============");
+        System.out.println(reportId);
+        String accessToken = request.getHeader("accessToken");
+        String refreshToken = request.getHeader("refreshToken");
+        User user = TokenUtil.parseAccessToken(accessToken, refreshToken);
+        if(user == null)
+            return new ResultVO(202, "no login", null);
+        System.out.println(user);
+        List<Report> reports = reportMapper.queryReportByUserId(user.getUserId());
+        Report report1 = new Report();
+        report1.setReportId(reportId);
+        boolean flag = false;
+        for (Report report:reports) {
+            flag = report.equals(report1);
+            System.out.println(flag);
+            if(flag)
+                break;
+        }
+        Integer delete = 0;
+        if(flag){
+             delete = reportMapper.delete(reportId);
+        }
+        if(delete == 1){
+            return new ResultVO(201, "success", null);
+        }
+        return new ResultVO(202, "fail", null);
+    }
+
+    @RequestMapping(value = "publishReport", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultVO publish(Report report,HttpServletRequest request) {
+        System.out.println(report);
+        String accessToken = request.getHeader("accessToken");
+        String refreshToken = request.getHeader("refreshToken");
+        User user = TokenUtil.parseAccessToken(accessToken, refreshToken);
+        if (user == null)
+            return new ResultVO(201, "no login", null);
+        report.setUserId(user.getUserId());
+        Date date = new Date();
+        report.setPublishTime(date);
+        Integer add = reportMapper.add(report);
+        ELKUtil.add("report",report);
+        if (add == 1)
+            return new ResultVO(200, "success", null);
+        return new ResultVO(202, "fail", null);
+    }
+
+
+    @RequestMapping(value = "report/update", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultVO updateReport(Report report,HttpServletRequest request) {
+        System.out.println(report);
+        String accessToken = request.getHeader("accessToken");
+        String refreshToken = request.getHeader("refreshToken");
+        User user = TokenUtil.parseAccessToken(accessToken, refreshToken);
+        if (user == null)
+            return new ResultVO(201, "no login", null);
+        if(user.getUserId() != report.getUserId())
+            return new ResultVO(201, "无操作权限", null);
+        Integer update = reportMapper.update(report);
+        ELKUtil.add("report",report);
+        if (update == 1)
+            return new ResultVO(200, "success", null);
+        return new ResultVO(202, "fail", null);
     }
 }
 

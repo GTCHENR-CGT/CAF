@@ -29,7 +29,8 @@ export let head = {
                 {name: "最新发布", select: ""},
                 {name: "最新回复", select: ""},
                 {name: "计算机", select: ""},
-                {name: "数学", select: ""}],
+                {name: "数学", select: ""},
+                {name: "其它版块", select: ""}],
             borderSelected: "数学",
             userInfo: {}
         }

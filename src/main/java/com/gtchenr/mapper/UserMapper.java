@@ -24,4 +24,8 @@ public interface UserMapper {
     Integer add(User user);
 
     User queryUserByLoginName(String loginName);
+
+    Integer update(User user);
+
+    Integer delete(Integer userId);
 }

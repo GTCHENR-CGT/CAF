@@ -50,4 +50,12 @@ public class UserMapperTest {
         User user = userMapper.queryUserByLoginName("gtchenr");
         System.out.println(user);
     }
+
+    @Test
+    public void updateTest(){
+        User user = userMapper.queryUserByUserId(1);
+        user.setEmail("gtchenr@gmail.com");
+        Integer update = userMapper.update(user);
+        System.out.println(update);
+    }
 }

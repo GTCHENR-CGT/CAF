@@ -59,6 +59,11 @@ export async function getUserInfo(data){
     return httpInstance.get(apiUrls.getUserInfo,data);
 }
 
+export async function getUserInfo1(data){
+
+    return httpInstance.get(apiUrls.getUserInfo1,data);
+}
+
 export async function getCommentsByUserId(data){
 
     return httpInstance.get(apiUrls.getCommentsByUserId,data);
@@ -76,4 +81,27 @@ export async function publishComment(data){
 
 export async function getReportByUserId(){
     return httpInstance.get(apiUrls.getReportByUserId);
+}
+export async function updateUser(data){
+    return httpInstance.post(apiUrls.updateUser,data);
+}
+
+export async function deleteUser(data){
+    return httpInstance.delete(apiUrls.deleteUser,data);
+}
+
+export async function register(data){
+    return httpInstance.post(apiUrls.register,data);
+}
+
+export async function deleteReport1(data){
+    return httpInstance.post(apiUrls.deleteReport1,data);
+}
+
+export async function addReport(data){
+    return httpInstance.post(apiUrls.addReport,data);
+}
+
+export async function updateReport(data){
+    return httpInstance.post(apiUrls.updateReport,data);
 }

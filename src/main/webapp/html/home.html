@@ -17,9 +17,8 @@
     </style>
 </head>
 <body id="body" onload="init()">
-
 <div id="app">
-    <head-item></head-item>
+    <head-item @borderchange="change"></head-item>
     <!--搜索框-->
     <div style="margin-top: 15px;" class="letRowCenter">
         <el-input placeholder="请输入内容" v-model="input" class="input-with-select">
@@ -61,13 +60,15 @@
 </div>
 
 <script type="module">
-    import {getReports} from "../js/service/home/service.js";
+    import {getReports, reports} from "../js/service/service.js";
     import {head1} from "../js/service/headCom1.js";
     import {
         navigateToReport,
         navigateToPublishReport,
         navigateToSearchPage,
+        navigateToHome
     } from "../js/API/pageTurn.js";
+
     window.init = function () {
         console.log("ssshhh");
         hideThemeList();
@@ -98,7 +99,8 @@
                 input: '',
                 select: '1',
                 reportList: Array,
-                isLogin: true
+                isLogin: true,
+                reportList1: Array
             }
         },
         methods: {
@@ -120,17 +122,52 @@
                 console.log(this.select);
                 navigateToSearchPage(this.select, encodeURI(encodeURI(this.input)));
                 //
+            },
+            change(e){
+                switch (e){
+                    case "论坛首页":
+                        this.reportList = this.reportList1
+                        break;
+                    case "热度推荐":
+                        alert("正在开发，敬请期待！");
+                        navigateToHome();
+                        break;
+                    case "最新发布":
+                        this.reportList.sort(function (a, b) {
+                            return a.publishTime < b.publishTime ? 1 : -1
+                        })
+                        break;
+                    case "最新回复":
+                        this.reportList = [];
+                        alert("正在开发，敬请期待！");
+                        navigateToHome();
+                        break;
+                    case "计算机":
+                        this.reportList = [];
+                        console.log("========")
+                        for (let i=0;i<this.reportList1.length;i++){
+                            if(this.reportList1[i].boardId === 1){
+                                this.reportList.push(this.reportList1[i])
+                            }
+                        }
+                        break;
+                    case "数学":
+                        this.reportList = [];
+                        for (let i=0;i<this.reportList1.length;i++){
+                            console.log(this.reportList1[i])
+                            if(this.reportList1[i].boardId === 2){
+                                this.reportList.push(this.reportList1[i])
+                            }
+                        }
+                        break;
+                }
             }
         },
         mounted() {
-            getReports()
+            reports()
                 .then((res) => {
                     this.reportList = res.data;
-                    for (let i = 0; i < this.reportList.length; i++) {
-                        if (this.reportList[i].reportTitle === null) {
-                            this.reportList.splice(i, 1);
-                        }
-                    }
+                    this.reportList1 = res.data;
                 })
                 .catch((err) => {
                     console.log(err);

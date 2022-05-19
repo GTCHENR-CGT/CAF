@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div style="position: relative;bottom: -100px;right: -650px;">
-                    <el-button plain>编辑资料</el-button>
+                    <el-button plain @click="openDialog">编辑资料</el-button>
                     <el-button plain @click="logOut()">退出登录</el-button>
                 </div>
             </div>
@@ -60,17 +60,23 @@
                 </div>
             </div>
         </el-main>
+        <user-dialog @cancel="cancelDialog" @edituser="editUser" :dialogvisible1="dialogVisible"></user-dialog>
     </el-container>
+
 </div>
 <!-- 先引入 Vue -->
 <script type="text/javascript" src="../js/lib/vue.js"></script>
 <!-- 引入组件库 -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script type="module">
-    import {navigateToHome, navigateToAdminLogin, navigateToLogin1, navigateToReport,navigateToPersonalHome} from "../js/API/pageTurn.js"
-    import {setStorage, getStorage} from "../js/API/common.js"
-    import {getCommentsByUserId, getReportById, getReportByUserId,getUserInfo} from "../js/service/service.js"
+    import {
+        navigateToLogin1,
+        navigateToReport,
+    } from "../js/API/pageTurn.js"
+    import {setStorage, getStorage, parseSex} from "../js/API/common.js"
+    import {getCommentsByUserId, getReportById, getReportByUserId, getUserInfo,updateUser} from "../js/service/service.js"
     import {head} from "../js/service/headCom.js";
+    import {editUserDialog} from "../js/service/personalHome/editUserDialog.js";
 
 
     let reportItem = {
@@ -78,7 +84,7 @@
             report: {}
         },
         methods: {
-            navigateToReportDetail1(report){
+            navigateToReportDetail1(report) {
                 navigateToReport(report.reportId);
             }
         },
@@ -112,7 +118,8 @@
         components: {
             'head-item': head,
             'report-item': reportItem,
-            'comment-item': commentItem
+            'comment-item': commentItem,
+            'user-dialog': editUserDialog
         },
         data: function () {
             return {
@@ -124,17 +131,18 @@
                     delivery: false,
                     type: [],
                     resource: '',
-                    desc: ''
+                    desc: '',
+                    userId: 1
                 },
                 commentList: [],
                 reportList: [],
                 commentReportList: [],
                 activeIndex: '1',
-                userInfo:{}
+                userInfo: {},
+                dialogVisible:false
             }
         },
         methods: {
-
             handleSelect(key, keyPath) {
                 console.log(key);
                 this.activeIndex = key;
@@ -170,9 +178,34 @@
                     .catch(err => {
                         console.log(err)
                     })
+            },
+            openDialog(){
+              this.dialogVisible = true;
+            },
+            cancelDialog(){
+                this.dialogVisible = false;
+                console.log("cancelDialog")
+            },
+            editUser(e){
+                let user= e.user;
+                let data = {
+                    name : user.name,
+                    sex: parseSex(user.sex),
+                    phone: user.phone,
+                    email: user.email
+                };
+                updateUser(data)
+                .then(res=>{
+                    alert("修改完成")
+                    this.dialogVisible = false;
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
             }
         },
         async mounted() {
+            this.userId = parseInt(getStorage("userId"))
             getReportByUserId()
                 .then(res => {
                     this.reportList = res.data;
@@ -182,14 +215,13 @@
                 })
             await this.getComments();
             await this.getCommentsReport();
-            getUserInfo({'userId':parseInt(getStorage("userId"))})
-            .then(res=>{
-                this.userInfo = res.data;
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-
+            getUserInfo({'userId': parseInt(getStorage("userId"))})
+                .then(res => {
+                    this.userInfo = res.data;
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
 
     })

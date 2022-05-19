@@ -21,5 +21,13 @@ export default {
     getCommentsByReportId:report+"/getCommentsByReportId",
     getCommentsByUserId:userPath+"/getCommentsByUserId",
     publishComment:userPath+"/publishComment",
-    getReportByUserId:userPath+"/getReportByUserId"
+    getReportByUserId:userPath+"/getReportByUserId",
+    updateUser:userPath+"/updateUser",
+    deleteUser:admin+"/deleteUser",
+    register:userPath+"/register",
+    deleteReport1:userPath+"/report/delete",
+    getUserInfo1:userPath+"/userInfo1",
+    addReport:userPath+"/publishReport",
+    updateReport:userPath+"/report/update"
+
 };

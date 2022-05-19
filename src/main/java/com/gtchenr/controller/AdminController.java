@@ -24,6 +24,7 @@ import java.util.List;
 @RequestMapping("admin")
 public class AdminController {
 
+    private UserMapper userMapper = MybatisUtil.getSqlSession().getMapper(UserMapper.class);
     @Autowired
     private AdminService adminService;
     @Autowired
@@ -157,5 +158,16 @@ public class AdminController {
     public ResultVO addReport(@Param("report")Report report){
 
         return new ResultVO(201, "success", reportService.reports());
+    }
+
+    @RequestMapping(value = "deleteUser", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResultVO updateUser(Integer userId) {
+
+        Integer flag = 0;
+        flag = userMapper.delete(userId);
+        if (flag == 1)
+            return new ResultVO(201,"success",null);
+        return new ResultVO(201,"fail",null);
     }
 }

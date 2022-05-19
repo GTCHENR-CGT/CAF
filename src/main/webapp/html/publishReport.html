@@ -3,85 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <title>发布报告</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script type="text/javascript" src="../js/lib/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../js/lib/vue.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/lib/icon.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_3274788_9adk7b8pp9m.css">
     <style lang="css">
-        @import "../css/publishReport.css";
+        @import "../css/home.css";
         @import "../css/lib/total.css";
     </style>
-    <script type="module">
-        import {publish,publish1} from "../js/service/publish/service.js"
-        import {navigateToHome} from "../js/API/pageTurn.js";
-
-        let vm = new Vue({
-            el: "#publish",
-            components: {},
-            data: function () {
-                return {}
-            },
-            methods: {
-                publishReport: function () {
-                    let data = $('#report').serialize();
-                    console.log(data);
-                    publish(data)
-                        .then((res) => {
-                            console.log(res);
-                            if(res.statusCode === 201){
-                                alert("发布成功，跳转返回主页！")
-                                navigateToHome();
-                            }else if(res.statusCode === 202){
-                                alert("发布失败，请检测输入！或者是否处于登录状态！");
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        })
-                }
-
-
-            }
-        })
-    </script>
 </head>
 <body>
-<div id="publish">
-    <h1 class="letRowCenter">填写报告内容</h1>
-    <div class="letRowCenter">
-        <form class="contain letRowCenter" name="report" method="post" id="report">
-            <div class="flex-row">
-                <div>报告题目</div><input type="text" name="reportTitle"/>
-            </div>
-            <div class="flex-row">
-                <div>报告人</div><input type="text" name="reportPeople"/>
-            </div>
-            <div class="flex-row">
-                <div>组织者</div><input type="text" name="reportOrganizer"/>
-            </div>
-            <div class="flex-row">
-                <div>地点</div><input type="text" name="reportLocation"/>
-            </div>
-            <div class="flex-row">
-                <div>开始时间</div><input type="text" name="reportLocation"/>
-            </div>
-            <div class="flex-row">
-                <div>结束时间</div><input type="text" name="reportLocation"/>
-            </div>
-            <div class="flex-row">
-                <div>报告摘要</div>
-                <textarea name="reportDetails"></textarea>
-            </div>
-            <div class="flex-row">
-                <div>报告人简介</div>
-                <textarea name="reportPeopleInfo" rows='4'></textarea>
-            </div>
-            <div class="letallCenter">
-                <button @click="publishReport" type="button">发布</button>
-            </div>
-        </form>
+
+<div id="app">
+    <div class="user_info flex-row-reverse" v-if="!isLogin">
+        <div class="user_item">
+            <label>欢迎使用校园学术论坛，请先<a>登录</a>或者<a>注册</a></label>
+            <label class="admin"><a>管理员登录</a></label>
+        </div>
     </div>
+    <div class="user_info flex-row-reverse" v-if="isLogin">
+        <div class="user_item">
+            <!--            <label>欢迎校园学术论坛</label>-->
+            <label>你好，{{userName}}!</label>
+            <label class="click" style="color: blue">我的首页</label>
+            <label class="click" style="color: blue">消息</label>
+            <label class="admin click" style="color: blue"><a>管理员登录</a></label>
+        </div>
+    </div>
+    <el-container>
+        <el-header height="200">
+            <h1 class="letallCenter">发布报告</h1>
+        </el-header>
+        <el-main width="800">
+            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+                     class="demo-ruleForm">
+                <el-form-item label="报告题目" prop="reportTitle">
+                    <el-input v-model="ruleForm.reportTitle"></el-input>
+                </el-form-item>
+                <el-form-item label="报告人" prop="reportPeople">
+                    <el-input v-model="ruleForm.reportPeople"></el-input>
+                </el-form-item>
+                <el-form-item label="组织者" prop="reportOrganizer">
+                    <el-input v-model="ruleForm.reportOrganizer"></el-input>
+                </el-form-item>
+                <el-form-item label="地点" prop="reportLocation">
+                    <el-input v-model="ruleForm.reportLocation"></el-input>
+                </el-form-item>
+                <el-form-item label="开始时间">
+                    <el-date-picker v-model="ruleForm.beginTime" type="datetime" placeholder="选择日期时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+                </el-form-item>
+                <el-form-item label="结束时间">
+                    <el-date-picker v-model="ruleForm.endTime" type="datetime" placeholder="选择日期时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+                </el-form-item>
+                <el-form-item label="报告摘要">
+                    <el-input type="textarea" v-model="ruleForm.reportDetails" rows="4"></el-input>
+                </el-form-item>
+                <el-form-item label="报告人简介">
+                    <el-input type="textarea" v-model="ruleForm.reportPeopleInfo" rows="4"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
+            </el-form>
+        </el-main>
+    </el-container>
 </div>
+<!-- 先引入 Vue -->
+<script type="text/javascript" src="../js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="module">
+    import {addReport} from "../js/service/service.js"
+    import {navigateToHome,navigateToPersonalHome} from "../js/API/pageTurn.js";
+    new Vue({
+        el: '#app',
+        data: function () {
+            var checkInput = (rule, value, callback) => {
+                switch (rule.field) {
+                    case 'reportTitle':
+                        if (!value) {
+                            return callback(new Error('报告题目不能为空'));
+                        }
+                        break;
+                    case 'reportPeople':
+                        if (!value) {
+                            return callback(new Error('报告人不能为空'));
+                        }
+                        break;
+                    case 'reportOrganizer':
+                        if (!value) {
+                            return callback(new Error('组织者不能为空'));
+                        }
+                        break;
+                    case 'reportLocation':
+                        if (!value) {
+                            return callback(new Error('地点不能为空'));
+                        }
+                        break;
+                    case 'reportDetails':
+                        if (!value) {
+                            return callback(new Error('报告摘要不能为空'));
+                        }
+                        break;
+                    case 'reportPeopleInfo':
+                        if (!value) {
+                            return callback(new Error('报告人简介不能为空'));
+                        }
+                        break;
+                }
+                // setTimeout(() => {
+                //     if (!Number.isInteger(value)) {
+                //         callback(new Error('请输入数字值'));
+                //     }
+                // }, 1000);
+            };
+            return {
+                isLogin:true,
+                userName:'gtchenr',
+                ruleForm: {
+                    reportTitle:'',
+                    reportPeople: '',
+                    reportOrganizer: '',
+                    reportLocation: '',
+                    beginDate:'',
+                    endDate:'',
+                    endTime:'',
+                    beginTime:'',
+                    reportDetails:'',
+                    reportPeopleInfo:''
+
+                },
+                rules: {
+                    reportTitle: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportPeople: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportOrganizer: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    beginDate: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    endDate:[
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    endTime: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    beginTime: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportLocation: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportDetails: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                    reportPeopleInfo: [
+                        {validator: checkInput, trigger: 'blur'}
+                    ],
+                }
+            };
+        },
+        methods: {
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        console.log("success submit")
+                        let data = {
+                            'reportName':this.ruleForm.reportName,
+                            'reportLocation':this.ruleForm.reportLocation,
+                            'reportOrganizer':this.ruleForm.reportOrganizer,
+                            'reportPeople':this.ruleForm.reportPeople,
+                            'reportDetails':this.ruleForm.reportDetails,
+                            'reportPeopleInfo':this.ruleForm.reportPeopleInfo,
+                            'reportBeginTime':this.ruleForm.beginTime,
+                            'reportEndTime':this.ruleForm.endTime,
+                        };
+                        console.log(data)
+                        this.publishReport(data);
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+                let data = {
+                    'reportTitle':this.ruleForm.reportTitle,
+                    'reportLocation':this.ruleForm.reportLocation,
+                    'reportOrganizer':this.ruleForm.reportOrganizer,
+                    'reportPeople':this.ruleForm.reportPeople,
+                    'reportDetails':this.ruleForm.reportDetails,
+                    'reportPeopleInfo':this.ruleForm.reportPeopleInfo,
+                    'reportBeginTime':this.ruleForm.beginTime,
+                    'reportEndTime':this.ruleForm.endTime
+                };
+                console.log(data)
+                this.publishReport(data);
+
+            },
+            resetForm(formName) {
+                console.log(formName)
+                this.$refs[formName].resetFields();
+            },
+
+            publishReport: function (data) {
+                addReport(data)
+                    .then((res) => {
+                        console.log(res);
+                        if(res.statusCode === 200){
+                            alert("发布成功，跳转返回个人主页！")
+                            navigateToPersonalHome();
+                        }else if(res.statusCode === 201){
+                            alert("发布失败，请检测输入！或者是否处于登录状态！");
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            }
+        }
+
+
+    })
+</script>
+<style>
+    .el-header, .el-footer {
+        /*background-color: #B3C0D1;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+
+    .el-main {
+        /*background-color: #E9EEF3;*/
+        /*color: #333;*/
+        text-align: center;
+        line-height: 60px;
+    }
+
+    body > .el-container {
+        margin-bottom: 40px;
+    }
+
+    .el-container:nth-child(7) .el-aside {
+        line-height: 320px;
+    }
+
+    .el-header h1 {
+        font-size: 30px;
+    }
+    .admin {
+        position: absolute;
+        margin-left: 20px;
+        left: 0;
+    }
+    .user_info {
+        height: 25px;
+        font-size: 12px;
+        background-color: white;
+        border-bottom: silver solid 1px;
+    }
+
+    .user_item {
+        height: 30px;
+    }
+
+    /*.user_item label:not(:last-child){*/
+    /*    border-right: silver solid 1px;*/
+    /*}*/
+</style>
 </body>
 </html>
-

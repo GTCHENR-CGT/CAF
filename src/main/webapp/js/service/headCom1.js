@@ -29,7 +29,8 @@ export let head1 = {
                 {name: "最新发布", select: ""},
                 {name: "最新回复", select: ""},
                 {name: "计算机", select: ""},
-                {name: "数学", select: ""}],
+                {name: "数学", select: ""},
+                {name: "其它版块", select: ""}],
             borderSelected: "论坛首页",
             userInfo: {}
         }
@@ -44,6 +45,7 @@ export let head1 = {
                     this.borders[i].select = "";
                 }
             }
+            this.$emit("borderchange",this.borderSelected);
             // navigateToHome();
         },
         navigateToAdminLogin1() {
